@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercício 1, 2 e 3 — versão 0.2 · Sete Cidades · Ponta Delgada · Grupo 3</title>
+<link rel="stylesheet" href="assets/site.css" onerror="document.getElementById('siteFallback').media='all'">
+<style id="siteFallback" media="not all">
+/* ==========================================================================
+   Folha de estilo reconstruída do dossier EX 1, 2 — aplicada apenas quando
+   assets/site.css não está disponível (ver <link ... onerror> no <head>).
+   ========================================================================== */
+:root, html[data-theme="dark"]{
+  --bg:#0a0e14; --bg-a:#0d1420; --bg-b:#0a0e14;
+  --panel:#121a25; --panel-2:#18222f; --panel-3:#1e2a39;
+  --line:#26313f; --line-soft:#1d2733;
+  --txt:#e7eef7; --txt-soft:#c2cede; --muted:#8fa0b4;
+  --accent:#38bdf8; --accent-2:#22d3ee; --accent-ink:#04222e;
+  --good:#34d399; --warn:#f87171; --shadow:0 18px 40px -22px rgba(0,0,0,.85);
+}
+html[data-theme="light"]{
+  --bg:#f4f7fb; --bg-a:#eef4fb; --bg-b:#f7fafd;
+  --panel:#ffffff; --panel-2:#f8fafd; --panel-3:#eef3f9;
+  --line:#dbe3ee; --line-soft:#e8eef6;
+  --txt:#14202e; --txt-soft:#33465c; --muted:#5f7386;
+  --accent:#0369a1; --accent-2:#0891b2; --accent-ink:#ffffff;
+  --good:#047857; --warn:#b91c1c; --shadow:0 16px 34px -24px rgba(15,32,54,.45);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(180deg,var(--bg-a) 0%,var(--bg-b) 420px);color:var(--txt);font-family:"Segoe UI","Inter",Arial,Helvetica,sans-serif;font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+
+/* hero */
+.hero{position:relative;min-height:470px;display:flex;align-items:flex-end;overflow:hidden;border-bottom:1px solid var(--line);background:radial-gradient(1100px 520px at 18% 12%,rgba(56,189,248,.20),transparent 62%),radial-gradient(900px 480px at 82% 82%,rgba(34,211,238,.14),transparent 60%),linear-gradient(155deg,#0c1523 0%,#0a121c 45%,#0b1a20 100%)}
+.hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42;filter:saturate(.9)}
+.hero .shade{position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,.022) 0 2px,transparent 2px 9px),linear-gradient(180deg,rgba(4,8,12,.18) 0%,rgba(4,8,12,.72) 78%);pointer-events:none}
+.hero-inner{position:relative;width:min(1120px,100%);margin:0 auto;padding:46px 24px 42px}
+.eyebrow{display:inline-block;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-2);border:1px solid rgba(34,211,238,.35);border-radius:999px;padding:6px 14px;margin-bottom:18px;background:rgba(12,30,40,.5)}
+.hero-title{font-size:clamp(2.1rem,5.4vw,3.6rem);line-height:1.04;font-weight:800;letter-spacing:-.02em;margin:0 0 14px;color:#f4f9ff;text-shadow:0 8px 30px rgba(0,0,0,.45)}
+.hero-sub{max-width:720px;margin:0 0 26px;font-size:1.03rem;color:#c3d3e4}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+.hero-cta a{text-decoration:none;font-weight:650;font-size:.93rem;padding:11px 20px;border-radius:10px;transition:transform .15s ease,background .2s ease,border-color .2s ease}
+.hero-cta a:hover{transform:translateY(-2px)}
+.hero-cta .solid{background:var(--accent);color:var(--accent-ink)}
+.hero-cta .ghost{color:#dbe9f6;border:1px solid rgba(219,233,246,.34);background:rgba(255,255,255,.04)}
+.hero-cta .ghost:hover{border-color:var(--accent-2);color:#fff}
+
+/* factos */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-bottom:1px solid var(--line)}
+.facts>div{background:var(--panel);padding:18px 22px;font-size:.82rem;color:var(--muted);line-height:1.45}
+.facts b{display:block;font-size:1rem;color:var(--txt);letter-spacing:-.01em;margin-bottom:3px}
+
+/* estrutura */
+.container{width:min(1120px,100%);margin:0 auto;padding:40px 24px 70px}
+h1{font-size:clamp(1.6rem,3vw,2.15rem);line-height:1.2;letter-spacing:-.02em;margin:0 0 10px}
+h2{font-size:1.5rem;letter-spacing:-.015em;margin:46px 0 16px;padding-left:14px;border-left:4px solid var(--accent);line-height:1.25;scroll-margin-top:90px}
+h3{font-size:1.12rem;letter-spacing:-.01em;margin:32px 0 10px;line-height:1.3;scroll-margin-top:90px}
+h4{font-size:.97rem;margin:22px 0 8px;color:var(--accent);font-weight:700}
+p{margin:0 0 12px}
+a{color:var(--accent)}
+.subtitle{color:var(--muted);font-size:.92rem;margin:0 0 30px;max-width:900px}
+
+/* nav */
+.topnav{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:4px;flex-wrap:wrap;padding:9px 14px;margin:0 -24px 30px;background:var(--panel);border-bottom:1px solid var(--line);box-shadow:0 10px 24px -20px rgba(0,0,0,.9)}
+.topnav a.nav,.topnav .brand,.topnav button{text-decoration:none;font-size:.82rem;font-weight:600;padding:7px 12px;border-radius:8px;border:1px solid transparent;background:none;color:var(--txt-soft);cursor:pointer;transition:background .16s ease,color .16s ease,border-color .16s ease;font-family:inherit}
+.topnav a.nav:hover,.topnav button:hover{background:var(--panel-2);color:var(--txt);border-color:var(--line)}
+.topnav .brand{color:var(--txt);letter-spacing:.08em;font-size:.78rem;margin-right:auto}
+.topnav .brand span{color:var(--accent)}
+#themeBtn{border-color:var(--line);background:var(--panel-2);color:var(--accent)}
+
+/* índice */
+.indice{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:18px 20px;margin-bottom:34px}
+.indice-title{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.idx-row{display:flex;align-items:center;gap:10px;padding:8px 6px;border-bottom:1px solid var(--line-soft)}
+.idx-row:last-child{border-bottom:none}
+.idx-row a{color:var(--txt);text-decoration:none;font-size:.94rem;font-weight:550}
+.idx-row a:hover{color:var(--accent)}
+.idx-toggle{width:24px;height:24px;flex:0 0 24px;border-radius:6px;border:1px solid var(--line);background:var(--panel-2);color:var(--accent);font-size:.8rem;line-height:1;cursor:pointer;padding:0}
+.idx-toggle:hover{background:var(--panel-3)}
+.idx-sub{display:none;flex-direction:column;gap:2px;padding:4px 0 10px 40px}
+.idx-sub.open{display:flex}
+.idx-sub a{color:var(--muted);text-decoration:none;font-size:.85rem;padding:3px 0}
+.idx-sub a:hover{color:var(--accent)}
+.idx-all{border-bottom:none}
+.idx-all a{color:var(--muted);font-size:.85rem}
+
+/* blocos */
+.bloco{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:0 0 18px;scroll-margin-top:90px}
+.bloco>:last-child{margin-bottom:0}
+.bloco ol,.bloco ul{margin:0;padding-left:20px}
+.bloco li{margin-bottom:6px}
+.context-box{background:var(--panel-2);border:1px solid var(--line);border-left:4px solid var(--accent-2);border-radius:10px;padding:16px 18px;margin:0 0 20px;font-size:.94rem;color:var(--txt-soft)}
+.destaque{background:linear-gradient(150deg,rgba(56,189,248,.13),rgba(34,211,238,.06));border:1px solid rgba(56,189,248,.32);border-radius:12px;padding:18px 20px;margin:0 0 22px;font-size:.96rem;color:var(--txt)}
+.destaque ol,.destaque ul{margin:0;padding-left:20px}
+.destaque li{margin-bottom:6px}
+.versao{margin:34px 0 0;padding:14px 18px;border:1px dashed var(--line);border-radius:10px;font-size:.87rem;color:var(--muted);background:var(--panel-2)}
+.nota{margin:28px 0 0;padding:14px 18px;border-radius:10px;border:1px solid var(--line);background:var(--panel);font-size:.84rem;color:var(--muted)}
+.footer{margin:30px 0 0;padding-top:18px;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted);text-align:center}
+
+/* P0 */
+.coord-grid{display:grid;grid-template-columns:max-content 1fr;gap:6px 18px;font-size:.9rem}
+.coord-label{color:var(--muted);font-weight:600}
+
+/* P2 galeria */
+.shop-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.shop-tabs button{border:1px solid var(--line);background:var(--panel);color:var(--txt-soft);border-radius:999px;padding:7px 15px;font-size:.78rem;font-weight:650;cursor:pointer;font-family:inherit;transition:all .16s ease}
+.shop-tabs button:hover{border-color:var(--accent);color:var(--accent)}
+.shop-tabs button.active{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:14px;margin:0 0 22px}
+.shop-card{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.shop-card.hidden{display:none}
+.shop-img{position:relative;aspect-ratio:4/3;overflow:hidden;background:linear-gradient(135deg,var(--panel-3),var(--panel-2))}
+.shop-img img{width:100%;height:100%;object-fit:cover;display:block;cursor:pointer;transition:transform .3s ease}
+.shop-card:hover .shop-img img{transform:scale(1.03)}
+.shop-img .plus{position:absolute;right:8px;top:8px;width:24px;height:24px;display:grid;place-items:center;border-radius:50%;background:rgba(6,12,20,.7);color:#e7eef7;font-size:.9rem;line-height:1}
+.shop-card figcaption{padding:9px 11px;font-size:.76rem;color:var(--muted);line-height:1.4}
+.shop-card figcaption b{display:block;color:var(--txt);font-size:.72rem;letter-spacing:.08em;margin-bottom:2px}
+
+/* P3 gráficos */
+.graf{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:0 0 20px}
+.graf h3{margin:0 0 12px;font-size:.92rem;color:var(--txt)}
+.plot{display:flex;gap:12px;height:215px;align-items:stretch}
+.plot .y{display:flex;flex-direction:column;justify-content:space-between;font-size:.64rem;color:var(--muted);padding-bottom:24px;text-align:right;min-width:26px}
+.plot .bars{display:flex;flex:1;gap:5px;align-items:flex-end;height:100%}
+.mes{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;gap:3px}
+.par{display:flex;align-items:flex-end;justify-content:center;gap:3px;width:100%;height:100%}
+.bar{width:42%;max-width:13px;min-height:2px;border-radius:3px 3px 0 0}
+.epw-t{background:#38bdf8}.ipma-t{background:#22d3ee}
+.epw-p{background:#a78bfa}.ipma-p{background:#f472b6}
+.mes .val{font-size:.55rem;color:var(--muted);white-space:nowrap}
+.mes>span{font-size:.64rem;color:var(--muted)}
+.leg{display:flex;flex-wrap:wrap;gap:16px;font-size:.72rem;color:var(--muted);margin-top:12px;align-items:center}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:middle}
+.dot.epw-t{background:#38bdf8}.dot.ipma-t{background:#22d3ee}
+.dot.epw-p{background:#a78bfa}.dot.ipma-p{background:#f472b6}
+.cap{font-size:.8rem;color:var(--muted);margin:12px 0 0}
+
+/* P4 fotos */
+.fotos{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px;margin:0 0 20px}
+.foto{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.foto img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:var(--panel-3);cursor:pointer}
+.foto .legenda{padding:11px 13px;font-size:.78rem;color:var(--muted);line-height:1.5}
+.foto .legenda strong{color:var(--txt)}
+#lightbox{position:fixed;inset:0;z-index:60;display:none;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:26px;background:rgba(3,7,12,.92);cursor:zoom-out}
+#lightbox.open{display:flex}
+#lightbox img{max-width:88vw;max-height:76vh;border-radius:8px}
+#lightbox p{max-width:72ch;color:#dbe7f3;font-size:.84rem;text-align:center;margin:0}
+#topBtn{position:fixed;right:18px;bottom:18px;z-index:50;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--panel);color:var(--txt);font-size:1.05rem;cursor:pointer;display:none}
+
+/* P5 */
+.board{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:0 0 20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.q{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--panel-2)}
+.q h4{margin:0 0 6px;color:var(--txt)}
+.q p{margin:0 0 4px;font-size:.84rem;color:var(--txt-soft)}
+.q.tl{border-top:3px solid #34d399}
+.q.tr{border-top:3px solid #f87171}
+.q.bl{border-top:3px solid #38bdf8}
+.q.br{border-top:3px solid #fbbf24}
+.strip{display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:12px;font-size:.72rem;color:var(--muted)}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:16px;margin:0 0 20px}
+.opt{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px}
+.opt h3{font-size:.95rem;margin:0 0 10px}
+.opt svg{width:100%;height:auto;background:var(--panel-3);border-radius:8px;display:block;margin-bottom:10px}
+.pro{font-size:.82rem;color:var(--good);margin:0 0 4px}
+.con{font-size:.82rem;color:var(--warn);margin:0}
+ul.check{list-style:none;padding:0;margin:0}
+ul.check li{position:relative;padding-left:26px;margin-bottom:7px;font-size:.88rem;cursor:pointer;transition:opacity .2s}
+ul.check li::before{content:"\25CB";position:absolute;left:0;color:var(--muted)}
+ul.check li.done::before{content:"\25CF";color:var(--accent)}
+ul.check li.done{opacity:.55;text-decoration:line-through}
+
+/* tabelas */
+table{width:100%;border-collapse:collapse;font-size:.85rem;margin:0 0 20px}
+th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+thead th{background:var(--panel-3);color:var(--txt);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
+tbody tr:nth-child(even) td{background:var(--panel-2)}
+td strong{color:var(--txt)}
+
+/* Ex.2 */
+#ex2{scroll-margin-top:90px}
+.ex2-arrows{display:flex;gap:8px;justify-content:flex-end;margin-bottom:10px}
+.ex2-arrows button{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--panel);color:var(--txt);font-size:1.15rem;line-height:1;cursor:pointer}
+.ex2-arrows button:hover{border-color:var(--accent);color:var(--accent)}
+.dots{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.dots button{padding:7px 17px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--txt-soft);font-size:.8rem;font-weight:650;cursor:pointer;font-family:inherit}
+.dots button.active{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.page{display:none}
+.page.active{display:block}
+.page>header{margin:0 0 12px}
+.page>header h1{font-size:1.35rem;margin:0 0 2px}
+.page>header p{margin:0;color:var(--muted);font-size:.82rem}
+.toggle{display:flex;justify-content:flex-end;margin:0 0 12px}
+.toggle button{border:1px solid var(--line);background:var(--panel);color:var(--txt-soft);border-radius:8px;padding:6px 13px;font-size:.76rem;font-weight:650;cursor:pointer;font-family:inherit}
+.toggle button:hover{border-color:var(--accent);color:var(--accent)}
+.report-view .col{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px;margin:0;overflow:hidden}
+.card h2{font-size:.76rem;margin:0 0 9px;padding:0;border:none;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.card img{width:100%;display:block;border-radius:8px;background:var(--panel-3);min-height:130px;object-fit:cover;cursor:zoom-in}
+.prompt{font-family:ui-monospace,Consolas,"Courier New",monospace;font-size:.7rem;line-height:1.5;color:var(--txt-soft);white-space:pre-wrap;background:var(--panel-2);border:1px solid var(--line-soft);border-radius:8px;padding:10px;max-height:240px;overflow:auto}
+.study-sep{margin:18px 0 10px;padding-top:10px;border-top:1px solid var(--line);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.compare-view{display:none}
+.page.compare .report-view{display:none}
+.page.compare .compare-view{display:block}
+.compare-label{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:12px 0 7px}
+.compare-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.compare-row figure{margin:0}
+.compare-row img{width:100%;display:block;border-radius:8px;background:var(--panel-3);min-height:110px;object-fit:cover;cursor:zoom-in}
+.compare-row figcaption{font-size:.72rem;color:var(--muted);margin-top:5px}
+#ex2-lightbox{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(3,7,12,.92);cursor:zoom-out}
+#ex2-lightbox.open{display:flex}
+#ex2-lightbox img{max-width:90vw;max-height:84vh;border-radius:8px}
+
+/* Ex.3 */
+.ex3-nav{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0 1.25rem}
+.ex3-nav a{display:inline-block;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:inherit;border:1px solid var(--line);border-radius:999px;padding:.42rem .85rem;transition:border-color .2s,background .2s}
+.ex3-nav a:hover{border-color:currentColor;background:var(--panel-3)}
+h3[id^="ex3-"]{margin-top:2.4rem;scroll-margin-top:90px}
+.ex3-intro{color:var(--txt-soft);max-width:72ch}
+.ex3-h{font-size:.97rem;font-weight:700;margin:.2rem 0 .55rem;scroll-margin-top:90px}
+.ex3-item{margin-bottom:1rem}
+.ex3-item p{margin:.35rem 0;line-height:1.65;text-align:justify}
+.ex3-rot{font-weight:700;color:var(--txt)}
+.ex3-cit{border-left:3px solid var(--accent-2);padding:.15rem 0 .15rem .85rem;font-style:italic;color:var(--txt-soft)}
+.ex3-item p:last-child{font-size:.82rem;color:var(--muted);margin-top:.5rem}
+.ex3-normas{margin:.4rem 0 .9rem;padding-left:1.2rem}
+.ex3-normas li{margin-bottom:.4rem}
+.ex3-adenda{color:var(--good);font-weight:700}
+.ex3-item .sem-fonte{color:var(--warn);font-weight:700}
+.ex3-item .vazio{color:var(--muted);font-style:italic}
+table.ex3-tabela{display:block;overflow-x:auto;border-collapse:collapse;margin:1rem 0;font-size:.82rem}
+.ex3-tabela th,.ex3-tabela td{border:1px solid var(--line);padding:.6rem .65rem;vertical-align:top;text-align:left}
+.ex3-tabela th{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;background:var(--panel-3)}
+.ex3-tabela caption{caption-side:top;text-align:left;font-size:.78rem;color:var(--muted);padding-bottom:.5rem}
+
+/* responsivo */
+@media(max-width:860px){
+  .facts{grid-template-columns:repeat(2,1fr)}
+  .grid2{grid-template-columns:1fr}
+  body{font-size:15.5px}
+}
+@media(max-width:520px){
+  .facts{grid-template-columns:1fr}
+  .container{padding:28px 16px 50px}
+  .topnav{margin:0 -16px 24px}
+}
+
+/* impressão */
+@media print{
+  @page{size:A4;margin:16mm 14mm 18mm 14mm}
+  html,html[data-theme="dark"]{
+    --bg:#fff;--bg-a:#fff;--bg-b:#fff;--panel:#fff;--panel-2:#fff;--panel-3:#f2f5f9;
+    --line:#c9d3e0;--line-soft:#dde5ee;--txt:#111a26;--txt-soft:#23303f;--muted:#52616f;
+    --accent:#0369a1;--accent-2:#0e7490;--accent-ink:#fff;--good:#047857;--warn:#b91c1c;--shadow:none;
+  }
+  body{background:#fff;font-size:9.4pt}
+  .hero{min-height:auto;background:#fff;border-bottom:2px solid var(--accent)}
+  .hero .bg,.hero .shade{display:none}
+  .hero-inner{padding:0 0 12px}
+  .hero-title{color:#0b1622;font-size:22pt;text-shadow:none}
+  .hero-sub,.eyebrow{color:#33465c}
+  .hero-cta,.topnav,#themeBtn,.ex3-nav,.idx-toggle,.nota,#topBtn,.ex2-arrows,.dots,.toggle{display:none!important}
+  .container{width:100%;padding:0}
+  .indice{box-shadow:none;padding:10px 12px;page-break-after:avoid}
+  .idx-sub{display:flex}
+  .page{display:block!important}
+  .compare-view{display:block!important}
+  h2,h3,h4{page-break-after:avoid;break-after:avoid}
+  .bloco,.card,.q,.opt,.graf,.destaque,.context-box,.ex3-item{page-break-inside:avoid;break-inside:avoid;box-shadow:none;background:#fff}
+  thead{display:table-header-group}
+  tr{page-break-inside:avoid;break-inside:avoid}
+  a{color:inherit;text-decoration:none}
+  .prompt{max-height:none;overflow:visible}
+}
+</style>
+</head>
+<body>
+<section class="hero" id="top"><img class="bg" src="FOTOS%20EX.3/lagoa%20das%20sete%20cidades_vista%2003.jpg" alt="Lagoa Azul e Lagoa Verde, Sete Cidades"><div class="shade"></div><div class="hero-inner"><div class="eyebrow">Rua Atlântida – Sete Cidades – Açores</div><div class="hero-title">Entre cratera e cidade</div><p class="hero-sub">Aldeia de 701 habitantes na caldeira, entre a Lagoa Azul e a encosta – estudo detalhado do local, experiência de imagem AI e enquadramento técnico e legal.</p><div class="hero-cta"><a class="solid" href="#indice">Explorar o estudo</a><a class="ghost" href="#ex2">Ver Ex.2</a><a class="ghost" href="#ex3">Ver Ex.3</a></div></div></section><div class="facts"><div><b>37.859833 N - 25.790972 W</b>Coordenadas - 262 m</div><div><b>Clima Csb</b>Verão seco e suave – projetar para 30 C</div><div><b>701 hab.</b>Aldeia na caldeira – Paisagem Protegida</div><div><b>P0-P5 + Ex.2 + Ex.3</b>Belisa – João – Lia</div></div>
+<div class="container">
+
+<h1>Região Autónoma dos Açores — Estudo Detalhado do Local · P0–P5</h1>
+<p class="subtitle">Grupo 3 · Rua Atlântida, Sete Cidades (Ponta Delgada, São Miguel) · NUTS III Região Autónoma dos Açores · Inteligência Artificial Aplicada na Arquitetura · Setembro 2026 · P0–P5 + Ex.2 + Ex.3</p>
+
+
+<nav class="topnav"><a class="brand" href="#top">GRUPO 3 <span>- SETE CIDADES</span></a><a class="nav" href="#top">Início</a><a class="nav" href="#indice">Índice</a><a class="nav" href="#p0">P0</a><a class="nav" href="#p1">P1</a><a class="nav" href="#p2">P2</a><a class="nav" href="#p3">P3</a><a class="nav" href="#p4">P4</a><a class="nav" href="#p5">P5</a><a class="nav" href="#ex2">Ex.2</a><a class="nav" href="#ex3">Ex.3</a><button id="themeBtn" title="Alternar claro/escuro">Dark</button></nav>
+
+<div class="indice" id="indice">
+<div class="indice-title">Índice</div>
+<div class="indice-list">
+<div class="idx-row" data-target="p0"><button class="idx-toggle" aria-label="Expandir">+</button><a href="#p0">P0 — Localização</a></div>
+<div class="idx-sub" data-sub="p0"></div>
+<div class="idx-row" data-target="p1"><button class="idx-toggle" aria-label="Expandir">+</button><a href="#p1">P1 — Quadro Socioeconómico</a></div>
+<div class="idx-sub" data-sub="p1"></div>
+<div class="idx-row" data-target="p2"><button class="idx-toggle" aria-label="Expandir">+</button><a href="#p2">P2 — Caracterização do Lugar</a></div>
+<div class="idx-sub" data-sub="p2"></div>
+<div class="idx-row" data-target="p3"><button class="idx-toggle" aria-label="Expandir">+</button><a href="#p3">P3 — Clima e Primeira Massa</a></div>
+<div class="idx-sub" data-sub="p3"></div>
+<div class="idx-row" data-target="p4"><button class="idx-toggle" aria-label="Expandir">+</button><a href="#p4">P4 — Vernáculo e Referências</a></div>
+<div class="idx-sub" data-sub="p4"></div>
+<div class="idx-row" data-target="p5"><button class="idx-toggle" aria-label="Expandir">+</button><a href="#p5">P5 — Síntese e Programa</a></div>
+<div class="idx-sub" data-sub="p5"></div>
+<div class="idx-row" data-target="ex2"><button class="idx-toggle" aria-label="Expandir">+</button><a href="#ex2">Ex.2 — Imagem AI</a></div>
+<div class="idx-sub" data-sub="ex2"></div>
+<div class="idx-row" data-target="ex3"><button class="idx-toggle" aria-label="Expandir">+</button><a href="#ex3">Ex.3 — Enquadramento Técnico e Legal</a></div>
+<div class="idx-sub" data-sub="ex3"></div>
+<div class="idx-row" data-target="fontes"><button class="idx-toggle" aria-label="Expandir">+</button><a href="#fontes">Fontes verificadas</a></div>
+<div class="idx-sub" data-sub="fontes"></div>
+<div class="idx-row" data-target="notas-ia"><button class="idx-toggle" aria-label="Expandir">+</button><a href="#notas-ia">Notas sobre IA</a></div>
+<div class="idx-sub" data-sub="notas-ia"></div>
+<div class="idx-row" data-target="autores"><button class="idx-toggle" aria-label="Expandir">+</button><a href="#autores">Autores</a></div>
+<div class="idx-sub" data-sub="autores"></div>
+<div class="idx-row idx-all"><a href="#top">Voltar ao topo</a></div>
+</div>
+</div>
+
+<div class="bloco"><b>“Entre cratera e cidade”</b> — aldeia de 701 hab. na caldeira, entre a Lagoa Azul e a encosta.</div>
+
+<!-- P0 -->
+<h2 id="p0">P0 — Localização</h2>
+<div class="context-box">
+<div class="coord-grid">
+<span class="coord-label">Arquipélago:</span><span>Açores</span>
+<span class="coord-label">NUTS I/II/III:</span><span>PT2 / PT20 / PT200 — Região Autónoma dos Açores (única desde 2024)</span>
+
+
+<span class="coord-label">Município:</span><span>Ponta Delgada (São Miguel) — 233 km², 24 freguesias</span>
+<span class="coord-label">Sítio:</span><span>Rua Atlântida, Sete Cidades — margem da Lagoa Azul</span>
+<span class="coord-label">Coordenadas:</span><span>37,859833° N, 25,790972° W · 262 m</span>
+
+</div>
+</div>
+<div class="bloco"><b>Verificação:</b> conversão DMS confirmada, sem correção. Pin na margem da Lagoa Azul.</div>
+
+
+<!-- P1 -->
+<h2 id="p1">P1 — Quadro Socioeconómico</h2>
+<div class="context-box"><strong>Ponta Delgada:</strong> 67 229 hab. (28% dos Açores em 10% do território) · sede do Governo Regional e centro económico, administrativo e universitário.</div>
+<h3>P1-TAB — quadro socioeconómico</h3>
+<table><thead><tr><th>Indicador</th><th>Ponta Delgada</th><th>Açores (NUTS III)</th><th>Ano</th></tr></thead><tbody><tr><td><strong>População</strong></td><td>67 229</td><td>236 413</td><td>2021</td></tr><tr><td><strong>Variação 2011–2021</strong></td><td>−2,3%</td><td>−4,2%</td><td>2021</td></tr><tr><td><strong>Envelhecimento</strong></td><td>104,9</td><td>113,2</td><td>2021</td></tr><tr><td><strong>Densidade</strong></td><td>288,6 hab/km²</td><td>101,8 hab/km²</td><td>2021</td></tr><tr><td><strong>Alojamentos</strong></td><td>29 150</td><td>113 159</td><td>2021</td></tr><tr><td><strong>Ensino superior</strong></td><td>28,9%</td><td>22,4%</td><td>2021</td></tr><tr><td><strong>Desemprego</strong></td><td>7,8%</td><td>6,9%</td><td>2021</td></tr><tr><td><strong>Poder de compra (PT=100)</strong></td><td>102,2</td><td>87,6</td><td>2023</td></tr></tbody></table>
+<h3>Síntese P1</h3>
+<div class="bloco"><ol><li><strong>Centralidade:</strong> 28% da população em 10% do território; 288,6 vs 101,8 hab/km².</li><li><strong>Resiliência:</strong> −2,3% vs −4,2% — a capital perde menos.</li><li><strong>Mais jovem:</strong> envelhecimento 104,9 vs 113,2.</li><li><strong>Capital humano:</strong> 28,9% com ensino superior vs 22,4%.</li><li><strong>Poder dual:</strong> único IpC acima da média (102,2) mas com mais desemprego (7,8%).</li></ol></div>
+<div class="destaque">«Ponta Delgada é o polo demográfico, educativo e económico dos Açores: 28% da população, poder de compra acima da média e estrutura mais jovem.»</div>
+
+
+<!-- P2 -->
+<h2 id="p2">P2 — Caracterização do Lugar</h2>
+<div class="context-box">Margem da Lagoa Azul, interior da caldeira (5 km) — Paisagem Protegida, Geoparque UNESCO. Aldeia de 701 hab., núcleo linear de 1–2 pisos.</div>
+<div class="shop-tabs" id="p2tabs">
+<button class="active" data-f="all">Todas</button>
+<button data-f="orto">Ortofotos</button>
+<button data-f="vista">Vistas</button>
+<button data-f="local">Local</button>
+</div>
+<div class="shop-grid" id="p2grid">
+<figure class="shop-card" data-f="orto"><div class="shop-img"><span class="plus">+</span><img src="FOTOS%20EX.3/ortofoto%20500m.jpg" alt="Ortofotomapa 500 m"></div><figcaption><b>ORTO 500M</b><span>Ortofotomapa 500 m — pino no sítio.</span></figcaption></figure>
+<figure class="shop-card" data-f="orto"><div class="shop-img"><span class="plus">+</span><img src="FOTOS%20EX.3/ortofoto%201000m.jpg" alt="Ortofotomapa 1 km"></div><figcaption><b>ORTO 1KM</b><span>Ortofotomapa 1 km — caldeira.</span></figcaption></figure>
+<figure class="shop-card" data-f="vista"><div class="shop-img"><span class="plus">+</span><img src="FOTOS%20EX.3/lagoa%20das%20sete%20cidade_vista%2001.jpg" alt="Vista 01"></div><figcaption><b>VISTA 01</b><span>Vista 01 — caldeira.</span></figcaption></figure>
+<figure class="shop-card" data-f="vista"><div class="shop-img"><span class="plus">+</span><img src="FOTOS%20EX.3/lagoa%20das%20sete%20cidade_vista%2002.jpg" alt="Vista 02"></div><figcaption><b>VISTA 02</b><span>Vista 02 — Vista do Rei.</span></figcaption></figure>
+<figure class="shop-card" data-f="vista"><div class="shop-img"><span class="plus">+</span><img src="FOTOS%20EX.3/lagoa%20das%20sete%20cidades_vista%2003.jpg" alt="Vista 03"></div><figcaption><b>VISTA 03</b><span>Vista 03 — ponte e igreja.</span></figcaption></figure>
+<figure class="shop-card" data-f="vista"><div class="shop-img"><span class="plus">+</span><img src="FOTOS%20EX.3/lagoa%20das%20sete%20cidade_vista%2004.jpg" alt="Vista 04"></div><figcaption><b>VISTA 04</b><span>Vista 04 — núcleo e lagoa.</span></figcaption></figure>
+<figure class="shop-card" data-f="vista"><div class="shop-img"><span class="plus">+</span><img src="FOTOS%20EX.3/lagoa%20das%20sete%20cidades%20_vista%2005.jpg" alt="Vista 05"></div><figcaption><b>VISTA 05</b><span>Vista 05 — margem e cais.</span></figcaption></figure>
+<figure class="shop-card" data-f="local"><div class="shop-img"><span class="plus">+</span><img src="FOTOS%20EX.3/lagoa%20das%20sete%20cidades_vista%20com%20%20o%20local%20de%20trabalho.png" alt="Local de trabalho"></div><figcaption><b>LOCAL</b><span>Local de trabalho e serviços próximos.</span></figcaption></figure>
+</div>
+<h3>Nove dimensões — essencial</h3>
+<table><thead><tr><th>Dimensão</th><th>Estado</th><th>Implicação</th></tr></thead><tbody><tr><td><strong>Paleta</strong></td><td>Verdes, azul da lagoa, branco, telha vermelha, basalto.</td><td>Usar madeira, basalto e reboco claro.</td></tr><tr><td><strong>Solos</strong></td><td>Andossolos vulcânicos, húmidos e brandos.</td><td>Drenagem + fundações adequadas.</td></tr><tr><td><strong>Vegetação/fauna</strong></td><td>Criptoméria, laurissilva, endémicas; invasoras a controlar.</td><td>Só nativas; proteger margens.</td></tr><tr><td><strong>Sismo</strong></td><td><strong>Elevado</strong> — rift ativo, 30% em alta suscetibilidade.</td><td>Construção antissísmica; evitar faixas críticas.</td></tr><tr><td><strong>Cheia</strong></td><td>215 mm/24h (T100); lagoa non aedificandi.</td><td>Afastar da margem; cotas + permeáveis.</td></tr><tr><td><strong>Incêndio</strong></td><td>Sem histórico; criptoméria combustível.</td><td>Faixa 10–20 m; acessos e água.</td></tr><tr><td><strong>Poluição/ruído</strong></td><td>Sem indústria; sítio quieto; lagoas Razoável/Medíocre.</td><td>Zero descarga; conforto acústico.</td></tr><tr><td><strong>Serviços</strong></td><td>Aldeia equipada: igreja, restauração, kayak, trilhos.</td><td>Apoiar-se no existente.</td></tr><tr><td><strong>Edificado</strong></td><td>Basalto caiado + telha, 1–2 pisos; PDM rural exigente.</td><td>Reabilitar primeiro; material local.</td></tr></tbody></table>
+<h3>Figura-fundo (grupo)</h3>
+<div class="bloco"><b>Figura-fundo:</b> a Rua Atlântida é a <strong>dobradiça entre aldeia e água</strong> — construir pontuado sobre o verde, não frente sobre a lagoa.</div>
+<h3>Três pistas</h3>
+<div class="destaque"><ol>
+<li><strong>Recuar da água:</strong> pegada mínima fora da cheia; reabilitar e qualificar a margem.</li>
+<li><strong>Construir para o risco:</strong> drenagem, tampão nativo, antissísmica, faixa anti-incêndio.</li>
+<li><strong>Encaixar na aldeia:</strong> 1–2 pisos, muros de pedra, programa Geoparque.</li>
+</ol></div>
+
+
+<!-- P3 -->
+<h2 id="p3">P3 — Clima e Primeira Massa</h2>
+<div class="context-box"><strong>Clima Csb</strong> (verão seco e suave) · <strong>EPW</strong> aeroporto 085120 (78 m, 15 km) · <strong>IPMA</strong> est. 513 (35 m, 17 km, 1991–2020) · sítio 262 m (~−1,2 °C). Projetar para <strong>30 °C</strong>.</div>
+<h3>Estações</h3>
+<table><thead><tr><th>Referência</th><th>Valor</th></tr></thead><tbody><tr><td><strong>Sítio</strong></td><td>37,859833° N, −25,790972° W · 262 m</td></tr><tr><td><strong>EPW 085120</strong></td><td>Aeroporto PDL · 78 m · 15,3 km</td></tr><tr><td><strong>IPMA 513</strong></td><td>Afonso Chaves · 35 m · 1991–2020 · 16,9 km</td></tr></tbody></table>
+<div class="graf"><h3>Temperatura média mensal (°C) — EPW vs IPMA</h3>
+<div class="plot"><div class="y"><span>25</span><span>20</span><span>15</span><span>10</span><span>5</span><span>0</span></div><div class="bars">
+<div class="mes"><div class="par"><div class="bar epw-t" style="height:59%"></div><div class="bar ipma-t" style="height:60%"></div></div><div class="val">14,8|15,1</div><span>J</span></div>
+<div class="mes"><div class="par"><div class="bar epw-t" style="height:57%"></div><div class="bar ipma-t" style="height:59%"></div></div><div class="val">14,2|14,8</div><span>F</span></div>
+<div class="mes"><div class="par"><div class="bar epw-t" style="height:58%"></div><div class="bar ipma-t" style="height:61%"></div></div><div class="val">14,4|15,2</div><span>M</span></div>
+<div class="mes"><div class="par"><div class="bar epw-t" style="height:60%"></div><div class="bar ipma-t" style="height:64%"></div></div><div class="val">14,9|16,0</div><span>A</span></div>
+<div class="mes"><div class="par"><div class="bar epw-t" style="height:65%"></div><div class="bar ipma-t" style="height:70%"></div></div><div class="val">16,2|17,4</div><span>M</span></div>
+<div class="mes"><div class="par"><div class="bar epw-t" style="height:74%"></div><div class="bar ipma-t" style="height:78%"></div></div><div class="val">18,4|19,6</div><span>J</span></div>
+<div class="mes"><div class="par"><div class="bar epw-t" style="height:83%"></div><div class="bar ipma-t" style="height:87%"></div></div><div class="val">20,7|21,8</div><span>J</span></div>
+<div class="mes"><div class="par"><div class="bar epw-t" style="height:87%"></div><div class="bar ipma-t" style="height:92%"></div></div><div class="val">21,8|23,0</div><span>A</span></div>
+<div class="mes"><div class="par"><div class="bar epw-t" style="height:85%"></div><div class="bar ipma-t" style="height:88%"></div></div><div class="val">21,3|22,1</div><span>S</span></div>
+<div class="mes"><div class="par"><div class="bar epw-t" style="height:76%"></div><div class="bar ipma-t" style="height:79%"></div></div><div class="val">19,0|19,8</div><span>O</span></div>
+<div class="mes"><div class="par"><div class="bar epw-t" style="height:68%"></div><div class="bar ipma-t" style="height:70%"></div></div><div class="val">17,1|17,4</div><span>N</span></div>
+<div class="mes"><div class="par"><div class="bar epw-t" style="height:62%"></div><div class="bar ipma-t" style="height:64%"></div></div><div class="val">15,5|15,9</div><span>D</span></div>
+</div></div><div class="leg"><span><span class="dot epw-t"></span>EPW</span><span><span class="dot ipma-t"></span>IPMA</span><span>Ano: ~17,4–17,6 vs 18,2 °C</span></div>
+<p class="cap"><strong>Leitura:</strong> mesma sazonalidade com pico em agosto; IPMA sempre acima; EPW −0,3…−1,2 °C. Convergem (~1 °C).</p></div>
+<div class="graf"><h3>Precipitação mensal (mm) — EPW vs IPMA</h3>
+<div class="plot"><div class="y"><span>230</span><span>184</span><span>138</span><span>92</span><span>46</span><span>0</span></div><div class="bars">
+<div class="mes"><div class="par"><div class="bar epw-p" style="height:50%"></div><div class="bar ipma-p" style="height:44%"></div></div><div class="val">115|102</div><span>J</span></div>
+<div class="mes"><div class="par"><div class="bar epw-p" style="height:20%"></div><div class="bar ipma-p" style="height:38%"></div></div><div class="val">46|87</div><span>F</span></div>
+<div class="mes"><div class="par"><div class="bar epw-p" style="height:38%"></div><div class="bar ipma-p" style="height:42%"></div></div><div class="val">88|97</div><span>M</span></div>
+<div class="mes"><div class="par"><div class="bar epw-p" style="height:40%"></div><div class="bar epw-p" style="height:35%"></div></div><div class="val">92|80</div><span>A</span></div>
+<div class="mes"><div class="par"><div class="bar epw-p" style="height:12%"></div><div class="bar ipma-p" style="height:27%"></div></div><div class="val">27|61</div><span>M</span></div>
+<div class="mes"><div class="par"><div class="bar epw-p" style="height:30%"></div><div class="bar ipma-p" style="height:19%"></div></div><div class="val">70|44</div><span>J</span></div>
+<div class="mes"><div class="par"><div class="bar epw-p" style="height:8%"></div><div class="bar ipma-p" style="height:11%"></div></div><div class="val">18|26</div><span>J</span></div>
+<div class="mes"><div class="par"><div class="bar epw-p" style="height:7%"></div><div class="bar ipma-p" style="height:20%"></div></div><div class="val">16|46</div><span>A</span></div>
+<div class="mes"><div class="par"><div class="bar epw-p" style="height:38%"></div><div class="bar ipma-p" style="height:34%"></div></div><div class="val">88|78</div><span>S</span></div>
+<div class="mes"><div class="par"><div class="bar epw-p" style="height:60%"></div><div class="bar ipma-p" style="height:51%"></div></div><div class="val">139|118</div><span>O</span></div>
+<div class="mes"><div class="par"><div class="bar epw-p" style="height:44%"></div><div class="bar ipma-p" style="height:41%"></div></div><div class="val">101|95</div><span>N</span></div>
+<div class="mes"><div class="par"><div class="bar epw-p" style="height:95%"></div><div class="bar ipma-p" style="height:66%"></div></div><div class="val">219|153</div><span>D</span></div>
+</div></div><div class="leg"><span><span class="dot epw-p"></span>EPW</span><span><span class="dot ipma-p"></span>IPMA</span><span>Ano: ~1 019 / 998 vs 987,5 mm</span></div>
+<p class="cap"><strong>Leitura:</strong> pico em dezembro nas duas; padrão out–mar húmido / jun–ago seco — seca de verão Csb (jul 26 mm nas duas). Para precipitação, vale IPMA.</p></div>
+<h3>Seis pontos + duas regras</h3>
+<div class="bloco"><ol><li><strong>Calor:</strong> pico em agosto — projetar para 30 °C.</li><li><strong>Vento:</strong> NW–NE, 3,6 m/s no verão → ventilação cruzada.</li><li><strong>Chuva:</strong> dez ~150 mm, jul 26 mm, T100 215 mm → drenagem + cisterna.</li><li><strong>Noites:</strong> suaves, sem geada → arrefecer sem AC.</li><li><strong>Sol:</strong> sombrear S–W no verão; admitir sol de inverno.</li><li><strong>Humidade:</strong> 77–84% → invólucro respirável.</li></ol></div>
+<div class="destaque"><ol><li><strong>Barra E–W:</strong> ventilar NW–SE; vidro S sombreado; W cego.</li><li><strong>Base seca:</strong> piso elevado + permeáveis; beirais de verão; pátio a SE.</li></ol></div>
+<div class="bloco"><b>Leitura:</b> médias e chuva convergem; picos divergem (26,6 vs 30,1 °C) — vale IPMA para chuva, máximo real para calor.</div>
+
+
+<!-- P4 -->
+<h2 id="p4">P4 — Vernáculo e Referências</h2>
+<h3>Três regras vernáculas</h3>
+<table><thead><tr><th>Regra</th><th>Essência</th><th>Exemplo</th></tr></thead><tbody><tr><td><strong>R1 — Pedra + cal + telha</strong></td><td>Basalto espesso, vãos pequenos, caiação branca, telha 2–4 águas.</td><td>Casas rurais de São Miguel; Sete Cidades.</td></tr><tr><td><strong>R2 — Água fora, vento domado</strong></td><td>Porta elevada, cozinha/forno como coração, falsa para quartos.</td><td>Casas integradas; moinhos do Corvo/Santa Maria.</td></tr><tr><td><strong>R3 — Muro, quintal e cisterna</strong></td><td>Pedra seca, horta, cobertura a recolher água.</td><td>Quintais das Furnas; Graciosa.</td></tr></tbody></table>
+<h3>Duas obras de referência (proximidade)</h3>
+<div class="fotos">
+<div class="foto"><img src="FOTOS%20EX.3/IMAGEM%20NINE%20DOTS%2C%20Azorean%20Art%20Boutique%20Hotel.jpg" alt="Nine Dots"><div class="legenda"><strong>NINE DOTS</strong> (2016–2024, knn) — Rua dos Mercadores; 36 quartos; basalto, cal, jardim de endémicas.</div></div>
+<div class="foto"><img src="FOTOS%20EX.3/IMAGEM%20Ernesto%20do%20Canto%20%E2%80%94%20condom%C3%ADnio.jpg" alt="Ernesto do Canto"><div class="legenda"><strong>Edifício / Condomínio Ernesto do Canto</strong> (BOX Arquitectos — Bárbara Morgado &amp; Óscar Catarino; col. Fabiana Velho Cabral, Emanuel Gomes, Marília Hipólito; 2025; fot. Ivo Tavares) — habitação em São Pedro, Ponta Delgada; 5 290 m², fogos T1–T5; dois lotes em cotas distintas, atravessamento, luz/ar, jardim público/privado interior, ventilação natural (“disrupção harmoniosa”); volumes curvos e jardim.</div></div>
+</div>
+<div class="destaque"><strong>Tendência: reabilitar com matéria local</strong> — basalto, cal, endémicas; construir com o lugar.</div>
+
+<div id="lightbox"><img src="" alt="imagem ampliada"><p></p></div>
+<button id="topBtn" title="Voltar ao topo">↑</button>
+
+
+<!-- P5 -->
+<h2 id="p5">P5 — Síntese e Programa</h2>
+<div class="bloco"><b>30 segundos:</b> barra E–W (barata, ventila, visível) × pátio em L (integra, dá exterior, mais fundações) · <b>450 m² / 3 fogos</b>.</div>
+<h3>SWOT</h3>
+<div class="board"><div class="grid2">
+<div class="q tl"><h4>Forças</h4><p>S1 · 28,9% com ensino superior (2021)</p><p>S2 · IpC 102,2 · Densidade 288,6</p></div>
+<div class="q tr"><h4>Fraquezas</h4><p>W1 · Desemprego 7,76% (2021) · Quebra −2,3%</p><p>W2 · Sismo elevado · Margem protegida</p></div>
+<div class="q bl"><h4>Oportunidades</h4><p>O1 · Paisagem Protegida + Geoparque</p><p>O2 · Clima Csb · Vento 3,6 m/s</p></div>
+<div class="q br"><h4>Ameaças</h4><p>T1 · Cheias: 215 mm/24h (T100)</p><p>T2 · Aldeia a perder população (−2,3%; RAA −4,2%)</p></div>
+</div><div class="strip"><span>37,859833° N, 25,790972° W</span><span>Altitude ~262 m</span><span>EPW 085120 Ponta Delgada–João Paulo AP</span><span>Köppen Csb</span></div></div>
+<h3>Duas volumetrias</h3>
+<div class="opts">
+<div class="opt"><h3>Opção A / V1 — Barra compacta E–W</h3>
+<svg viewBox="0 0 300 170" role="img" aria-label="Esquema barra E-W"><rect x="0" y="128" width="300" height="42" fill="#90e0ef" opacity="0.45"/><text x="8" y="160" font-size="10" fill="#023e8a">lagoa (E)</text><rect x="60" y="58" width="180" height="56" rx="3" fill="#023e8a"/><rect x="60" y="106" width="180" height="8" fill="#e9c46a"/><rect x="60" y="58" width="24" height="56" fill="#c0392b" opacity="0.8"/><text x="63" y="52" font-size="9" fill="#c0392b">W cego</text><text x="140" y="52" font-size="9" fill="#0077b6">vidro S sombreado</text><g stroke="#0077b6" stroke-width="2"><line x1="18" y1="18" x2="62" y2="62"/><line x1="70" y1="10" x2="104" y2="44"/></g><text x="8" y="14" font-size="10" fill="#0077b6">vento NW</text><circle cx="252" cy="30" r="11" fill="#e9c46a"/><text x="238" y="52" font-size="9" fill="#856404">sol S</text><text x="270" y="14" font-size="10" fill="#333">N↑</text></svg>
+<p class="pro"><strong>Pró:</strong> eficiente e barato; ventila e sombreia numa só geometria.</p><p class="con"><strong>Contra:</strong> muito visível; expõe o W; pouca exterior.</p></div>
+<div class="opt"><h3>Opção B / V2 — Dissociados com pátio / Pátio fragmentado em L</h3>
+<svg viewBox="0 0 300 170" role="img" aria-label="Esquema volumes com pátio"><rect x="0" y="128" width="300" height="42" fill="#90e0ef" opacity="0.45"/><text x="8" y="160" font-size="10" fill="#023e8a">lagoa (E)</text><rect x="62" y="48" width="62" height="42" rx="3" fill="#023e8a"/><rect x="150" y="58" width="52" height="46" rx="3" fill="#023e8a"/><rect x="92" y="104" width="84" height="24" rx="3" fill="#023e8a" opacity="0.65"/><rect x="124" y="62" width="28" height="30" rx="2" fill="none" stroke="#2a9d8f" stroke-width="2" stroke-dasharray="4,3"/><text x="112" y="56" font-size="9" fill="#2a9d8f">pátio SE</text><circle cx="228" cy="112" r="7" fill="#2a9d8f"/><circle cx="248" cy="120" r="5" fill="#2a9d8f"/><circle cx="52" cy="112" r="7" fill="#2a9d8f"/><g stroke="#0077b6" stroke-width="2"><line x1="18" y1="18" x2="58" y2="58"/></g><text x="8" y="14" font-size="10" fill="#0077b6">vento NW</text><text x="270" y="14" font-size="10" fill="#333">N↑</text></svg>
+<p class="pro"><strong>Pró:</strong> integra na paisagem; pátio privado com endémicas.</p><p class="con"><strong>Contra:</strong> mais fundações e custo; mais drenagem.</p></div>
+</div>
+<h3>Programa — 450 m² / 3 fogos</h3>
+<table><thead><tr><th>Espaço</th><th>m²</th><th>Un.</th></tr></thead><tbody>
+<tr><td>Fogo T2 (75 m²)</td><td>150</td><td>2</td></tr>
+<tr><td>Fogo T3 (110 m²)</td><td>110</td><td>1</td></tr>
+<tr><td>Pátio-jardim com endémicas + cisterna</td><td>120</td><td>1</td></tr>
+<tr><td>Arrumos / técnica</td><td>20</td><td>1</td></tr>
+<tr><td>Estacionamento (25 m²/lugar)</td><td>50</td><td>2</td></tr>
+<tr><td><strong>Total indicativo</strong></td><td><strong>450</strong></td><td><strong>3 fogos</strong></td></tr>
+</tbody></table>
+<div class="bloco"><b>Fluxo:</b> Reabilitar ▸ Interpretar ▸ Percorrer ▸ Gerir água ▸ Apoiar. Escala da aldeia (1–2 pisos).</div>
+<h3>Verificar no local (clica para marcar)</h3>
+<div class="bloco"><p><strong>Verificar:</strong></p>
+<ul class="check">
+<li>Cotas, limites, edificado e vestígios de cheia.</li>
+<li>Sondagens, nível freático, redes e ligação.</li>
+<li>Sol, vento, ruído, margens, muros e flora a preservar.</li>
+</ul>
+</div>
+
+
+<!-- FONTES VERIFICADAS -->
+<h2 id="ex2">Ex.2 - Imagem AI</h2>
+<div class="context-box"><strong>João – Lia – Belisa:</strong> original, prompt, gerada – em ChatGPT e Gemini. Use as setas ou os nomes para circular entre os três.</div>
+<section id="ex2">
+<div class="ex2-arrows"><button onclick="movePage(-1)" aria-label="Anterior">&lsaquo;</button><button onclick="movePage(1)" aria-label="Seguinte">&rsaquo;</button></div>
+  
+  
+
+  <div class="dots">
+    <button id="dot-joao" onclick="showPage(0)">João</button>
+    <button id="dot-lia" onclick="showPage(1)">Lia</button>
+    <button id="dot-belisa" onclick="showPage(2)">Belisa</button>
+  </div>
+
+  <!-- ============ JOÃO ============ -->
+  <div class="page" id="page-joao">
+    <header><h1>João — Ex.2</h1><p>Report: inputs e outputs</p></header>
+    <div class="toggle"><button onclick="this.closest('.page').classList.toggle('compare'); this.textContent = this.closest('.page').classList.contains('compare') ? 'Ver cada' : 'Ver todas';">Ver todas</button></div>
+    <div class="report-view">
+      <div class="col">
+        <div class="col-title">ChatGPT</div>
+        <section class="card"><h2>Imagem Original</h2><img src="FOTOS%20EX.3/Imagem%20Base.jpeg" alt="Original"></section>
+        <section class="card"><h2>Prompt 1</h2><div class="prompt">**BUILDING**
+I wanted as Torre do TOmbo de Lisboa
+An archive building
+**CONTEXT**
+Add 3 trees aligned, add 5 people circulating in or out of the building entries.
+Clear sky, but don't show the sun
+
+**MATERIAL**
+Use the Torre do Tombo de Lisboa as a reference facade for the materiality.
+Consider the building is 50 years old
+
+**LIGHT**
+The perspective is looking to SouthWest, consider is 15h on spring season on Lisbon. Intensify the projected shadow
+
+**STYLE**
+Make a hyperrealistic photo out of this drawing made in two pages of a notebook, please remove the pages fold without disturb the drawing perspective
+
+**PRESERVE**
+Preserve the buildings geometry, and placement
+Don't change the perspective point of view</div></section>
+        <section class="card"><h2>Imagem 1</h2><img src="FOTOS%20EX.3/Imagem%201.png" alt="Imagem 1"></section>
+        <section class="card"><h2>Prompt 2</h2><div class="prompt">**BUILDING**
+Programme, volume, fixed elements and viewpoint.
+
+**CONTEXT**
+Site, city, vegetation, uses and human presence.
+Make the trees 50% bigger and wider, below them add benches, two people sitting
+Add more 8 people, adults
+
+**MATERIAL**
+Matter, texture, ageing and level of detail.
+Change the facade to look like the reference image I attached, it's the Centro Cultural de Belém, Lisbon
+
+**LIGHT**
+Time, orientation, atmosphere, intensity and contrast.
+
+**STYLE**
+Visual language, realism, framing and references.
+**PRESERVE**
+Preserve the light, style and building</div></section>
+        <section class="card"><h2>Imagem 2</h2><img src="FOTOS%20EX.3/Imagem%202.png" alt="Imagem 2"></section>
+      </div>
+      <div class="col">
+        <div class="col-title">Gemini</div>
+        <section class="card"><h2>Imagem Original</h2><img src="FOTOS%20EX.3/Imagem%20Base.jpeg" alt="Original"></section>
+        <section class="card"><h2>Prompt 1 — Gemini</h2><div class="prompt">BUILDING
+I wanted as Torre do TOmbo de Lisboa
+An archive building
+CONTEXT
+Add 3 trees aligned, add 5 people circulating in or out of the building entries.
+Clear sky, but don't show the sun
+MATERIAL
+Use the Torre do Tombo de Lisboa as a reference facade for the materiality.
+Consider the building is 50 years old
+LIGHT
+The perspective is looking to SouthWest, consider is 15h on spring season on Lisbon. Intensify the projected shadow
+STYLE
+Make a hyperrealistic photo out of this drawing made in two pages of a notebook, please remove the pages fold without disturb the drawing perspective
+PRESERVE
+Preserve the buildings geometry, and placement
+Don't change the perspective point of view</div></section>
+        <section class="card"><h2>Gemini 1</h2><img src="FOTOS%20EX.3/Gemini%201.jpg" alt="Gemini 1"></section>
+        <section class="card"><h2>Prompt 2 — Gemini</h2><div class="prompt">BUILDING
+Maintain the central building on the centre of the perspective, however remove the side building on the right, use that area as walkable space for the people
+And remove the structure on top of the photographer, we can see it's wall on the left and the shadow projected on the ground
+
+CONTEXT
+The building is on the top of a hill, so we can't see other buildings around it
+Make the trees 200% bigger, and expand their soil by 100%
+All the pavement should be calçada Portuguesa (first image attached), besides the ramps
+Add more 8 people, adults, balance the amount of women and men
+
+MATERIAL
+Change the facade materiality to the same as the CCB Lisbon (second image attached), consider the building age of 50 years
+
+LIGHT
+Time, orientation, atmosphere, intensity and contrast.
+STYLE
+Visual language, realism, framing and references.
+PRESERVE
+Preserve the light and the style</div></section>
+        <section class="card"><h2>Gemini 2</h2><img src="FOTOS%20EX.3/Gemini%202.jpg" alt="Gemini 2"></section>
+      </div>
+    </div>
+    <div class="compare-view">
+      <div class="compare-label">ChatGPT</div>
+      <div class="compare-row">
+        <figure><img src="FOTOS%20EX.3/Imagem%20Base.jpeg" alt="Original"><figcaption>Original</figcaption></figure>
+        <figure><img src="FOTOS%20EX.3/Imagem%201.png" alt="Imagem 1"><figcaption>Imagem 1</figcaption></figure>
+        <figure><img src="FOTOS%20EX.3/Imagem%202.png" alt="Imagem 2"><figcaption>Imagem 2</figcaption></figure>
+      </div>
+      <div class="compare-label">Gemini</div>
+      <div class="compare-row">
+        <figure><img src="FOTOS%20EX.3/Imagem%20Base.jpeg" alt="Original"><figcaption>Original</figcaption></figure>
+        <figure><img src="FOTOS%20EX.3/Gemini%201.jpg" alt="Gemini 1"><figcaption>Gemini 1</figcaption></figure>
+        <figure><img src="FOTOS%20EX.3/Gemini%202.jpg" alt="Gemini 2"><figcaption>Gemini 2</figcaption></figure>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ LIA ============ -->
+  <div class="page" id="page-lia">
+    <header><h1>Lia — Ex.2</h1><p>Report: inputs e outputs</p></header>
+    <div class="toggle"><button onclick="this.closest('.page').classList.toggle('compare'); this.textContent = this.closest('.page').classList.contains('compare') ? 'Ver cada' : 'Ver todas';">Ver todas</button></div>
+    <div class="report-view">
+      <div class="col">
+        <div class="col-title">ChatGPT</div>
+        <section class="card"><h2>Imagem Original 01</h2><img src="FOTOS%20EX.3/imagem%2001%20original.jpg" alt="Original 01"></section>
+        <section class="card"><h2>Prompt 01</h2><div class="prompt">EDIFÍCIO
+- Uma recepção de um consultório,
+CONTEXTO
+- Deixe uma faixa da cortina a direita aberta indicando o local do edifício inserido,
+local: vista para a ponte 25 de abril Lisboa, Portugal.
+- Adicione a presença humana de acordo com o uso do edifício (recepção de um consultório).
+MATERIAL
+- Ao fundo da imagem, modifique o painel de textura quadriculada e coloque uma parede de cobogós na cor terracota. Na poltrona jangada à esquerda da imagem, retire e adicione um balcão de recepção, em madeira e tampo de pedra branca. A luminária branca a esquerda retire-a.
+LUZ
+- Manter iluminação existente na imagem.
+ESTILO
+- Manter a linguagem visual da imagem. Adapte o material desta imagem ao novo contexto visual.
+PRESERVAR
+- Preservar enquadramento da imagem. Preservar poltronas brancas existentes na imagem, mesas de centro.</div></section>
+        <section class="card"><h2>Imagem 01 — ChatGPT</h2><img src="FOTOS%20EX.3/imagem%2001%20gerada%20chat.png" alt="Chat 01"></section>
+        <div class="study-sep">Estudo 02</div>
+        <section class="card"><h2>Imagem Original 02</h2><img src="FOTOS%20EX.3/imagem%2002%20original.png" alt="Original 02"></section>
+        <section class="card"><h2>Prompt 02</h2><div class="prompt">EDIFÍCIO
+- Um salão de um restaurante
+CONTEXTO
+- Deixe uma faixa da cortina a direita aberta indicando o local do edifício inserido,
+local: vista cristo redentor rio de janeiro
+- Adicione a presença humana de acordo com o uso do edifício (salão de restaurante)
+MATERIAL
+- Retire o sofá, as poltronas e os tapetes. Adicione mesas de madeira, cadeiras em madeira e detalhes em palha. coloque centros de mesas pequenos que harmonizem com o estilo do ambiente.
+LUZ
+- Manter iluminação existente na imagem.
+ESTILO
+- Manter a linguagem visual da imagem. Adapte o material desta imagem ao novo contexto visual.
+PRESERVAR
+- Preservar enquadramento da imagem. Preservar vasos de plantas, quadros decorativos, assento à esquerda da imagem.</div></section>
+        <section class="card"><h2>Imagem 02 — ChatGPT</h2><img src="FOTOS%20EX.3/imagem%2002%20gerada%20CHAT.png" alt="Chat 02"></section>
+      </div>
+      <div class="col">
+        <div class="col-title">Gemini</div>
+        <section class="card"><h2>Imagem Original 01</h2><img src="FOTOS%20EX.3/imagem%2001%20original.jpg" alt="Original 01"></section>
+        <section class="card"><h2>Prompt 01 — Gemini</h2><div class="prompt">EDIFÍCIO
+- Uma recepção de um consultório,
+CONTEXTO
+- Deixe uma faixa da cortina a direita aberta indicando o local do edifício inserido,
+local: vista para a ponte 25 de abril Lisboa, Portugal.
+- Adicione a presença humana de acordo com o uso do edifício (recepção de um consultório).
+MATERIAL
+- Ao fundo da imagem, modifique o painel de textura quadriculada e coloque uma parede de cobogós na cor terracota. Na poltrona jangada à esquerda da imagem, retire e adicione um balcão de recepção, em madeira e tampo de pedra branca. A luminária branca a esquerda retire-a.
+LUZ
+- Manter iluminação existente na imagem.
+ESTILO
+- Manter a linguagem visual da imagem. Adapte o material desta imagem ao novo contexto visual.
+PRESERVAR
+- Preservar enquadramento da imagem. Preservar poltronas brancas existentes na imagem, mesas de centro.</div></section>
+        <section class="card"><h2>Imagem 01 — Gemini</h2><img src="FOTOS%20EX.3/imagem%2001%20gerada%20gemini.jpg" alt="Gemini 01"></section>
+        <div class="study-sep">Estudo 02</div>
+        <section class="card"><h2>Imagem Original 02</h2><img src="FOTOS%20EX.3/imagem%2002%20original.png" alt="Original 02"></section>
+        <section class="card"><h2>Prompt 02 — Gemini</h2><div class="prompt">EDIFÍCIO
+- Um salão de um restaurante
+CONTEXTO
+- Deixe uma faixa da cortina a direita aberta indicando o local do edifício inserido,
+local: vista cristo redentor rio de janeiro
+- Adicione a presença humana de acordo com o uso do edifício (salão de restaurante)
+MATERIAL
+- Retire o sofá, as poltronas e os tapetes. Adicione mesas de madeira, cadeiras em madeira e detalhes em palha. coloque centros de mesas pequenos que harmonizem com o estilo do ambiente.
+LUZ
+- Manter iluminação existente na imagem.
+ESTILO
+- Manter a linguagem visual da imagem. Adapte o material desta imagem ao novo contexto visual.
+PRESERVAR
+- Preservar enquadramento da imagem. Preservar vasos de plantas, quadros decorativos, assento à esquerda da imagem.</div></section>
+        <section class="card"><h2>Imagem 02 — Gemini</h2><img src="FOTOS%20EX.3/IMAGEM%2002%20GERADA%20GEMINI.jpg" alt="Gemini 02"></section>
+      </div>
+    </div>
+    <div class="compare-view">
+      <div class="compare-label">ChatGPT</div>
+      <div class="compare-row">
+        <figure><img src="FOTOS%20EX.3/imagem%2001%20original.jpg" alt="Original 01"><figcaption>Original 01</figcaption></figure>
+        <figure><img src="FOTOS%20EX.3/imagem%2001%20gerada%20chat.png" alt="Chat 01"><figcaption>Chat 01</figcaption></figure>
+        <figure><img src="FOTOS%20EX.3/imagem%2002%20gerada%20CHAT.png" alt="Chat 02"><figcaption>Chat 02</figcaption></figure>
+      </div>
+      <div class="compare-label">Gemini</div>
+      <div class="compare-row">
+        <figure><img src="FOTOS%20EX.3/imagem%2001%20original.jpg" alt="Original 01"><figcaption>Original 01</figcaption></figure>
+        <figure><img src="FOTOS%20EX.3/imagem%2001%20gerada%20gemini.jpg" alt="Gemini 01"><figcaption>Gemini 01</figcaption></figure>
+        <figure><img src="FOTOS%20EX.3/IMAGEM%2002%20GERADA%20GEMINI.jpg" alt="Gemini 02"><figcaption>Gemini 02</figcaption></figure>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ BELISA ============ -->
+  <div class="page" id="page-belisa">
+    <header><h1>Belisa — Ex.2</h1><p>Report: inputs e outputs</p></header>
+    <div class="toggle"><button onclick="this.closest('.page').classList.toggle('compare'); this.textContent = this.closest('.page').classList.contains('compare') ? 'Ver cada' : 'Ver todas';">Ver todas</button></div>
+    <div class="report-view single">
+      <div class="col">
+        <section class="card"><h2>Imagem Original</h2><img src="FOTOS%20EX.3/imagem%201%20_original.jpeg" alt="Original"></section>
+        <section class="card"><h2>Prompt 1</h2><div class="prompt">PRIMEIRO RESULTADO DA PRIMEIRA PROMPT
+EDIFÍCIO
+uma habitação unifamiliar, que mantenha uma ponto de vista sendo uma axonometria expandida,
+MATERIAL
+As zonas íntimas e sociais tenham uma material no piso diferente, as àreas húmidas em cerâmica e as zonas madeiras, os vidros virados pra galeria tem de ser fosco, e o banco no exterior um calcário de tom claro bujardado, e o pavimento da galeria seja no mesmo tom suave.
+o ninho na esquerda em formato oval quero que o fundo seja num bordo, e a corva lado ao lado seja em cobogó
+LUZ
+e quero uma luz suave no interior,
+ESTILO
+linguagem visual, realismo,
+PRESERVAR
+preservar a forma e composição do edifício</div></section>
+        <section class="card"><h2>Imagem 1 — Gemini</h2><img src="FOTOS%20EX.3/imagem%201%20gerada%20pela%20gemini.jpeg" alt="Imagem 1"></section>
+        <section class="card"><h2>Prompt 2</h2><div class="prompt">SEGUNDO RESULTADO DA SEGUNDA PROMPT
+"Nota": o programa obteve dificuldades em manter as proporções reais do projeto mesmo sendo fornecida a base da planta para saber manter a proporções dos espaços
+Na planta indiquei o ponto de vista ( uma seta a vermelho ) para onde eu queria fosse a vista fosse direcionada , agora quero que o ponto de vista seja ao nível do olho humano, e o fundo do nicho ao invés de ser em madeira quero que seja em bordô e tenha uma pessoa sentada nele e a parte curva seja em cobogó, e não quero preservar as proporções verdadeiras na qual forneci através da planta</div></section>
+        <div class="study-sep">Tries</div>
+        <section class="card"><h2>Tentativa 01</h2><img src="FOTOS%20EX.3/tentativa%2801%29%20da%20imagem%202%29.jpeg" alt="Tentativa 01"></section>
+        <section class="card"><h2>Tentativa 02</h2><img src="FOTOS%20EX.3/tentativa%2802%29%20da%20imagem%202.jpeg" alt="Tentativa 02"></section>
+      </div>
+    </div>
+    <div class="compare-view">
+      <div class="compare-label">Belisa</div>
+      <div class="compare-row two">
+        <figure><img src="FOTOS%20EX.3/imagem%201%20_original.jpeg" alt="Original"><figcaption>Original</figcaption></figure>
+        <figure><img src="FOTOS%20EX.3/imagem%201%20gerada%20pela%20gemini.jpeg" alt="Imagem 1"><figcaption>Imagem 1</figcaption></figure>
+      </div>
+      <div class="compare-label">Tries</div>
+      <div class="compare-row two">
+        <figure><img src="FOTOS%20EX.3/tentativa%2801%29%20da%20imagem%202%29.jpeg" alt="Tentativa 01"><figcaption>Tentativa 01</figcaption></figure>
+        <figure><img src="FOTOS%20EX.3/tentativa%2802%29%20da%20imagem%202.jpeg" alt="Tentativa 02"><figcaption>Tentativa 02</figcaption></figure>
+      </div>
+    </div>
+  </div>
+
+<div id="ex2-lightbox"><img id="ex2-lightbox-img" alt=""></div></section>
+
+<!-- ============ EX.3 ============ -->
+<h2 id="ex3">Ex.3 — Enquadramento Técnico e Legal</h2>
+<div class="context-box"><strong>Objeto:</strong> operação de construção nova de equipamento público com doca de acesso náutico à Lagoa das Sete Cidades, concelho de Ponta Delgada, ilha de São Miguel, Açores. <strong>Análise por domínio regulamentar:</strong> PDM, RJUE, RGEU, Acessibilidades e SCE, com quadro síntese final. <strong>Data de consulta:</strong> 19/10/2026.</div>
+<div class="ex3-nav"><a href="#ex3-pdm">1 · PDM</a><a href="#ex3-rjue">2 · RJUE</a><a href="#ex3-rgeu">3 · RGEU</a><a href="#ex3-acess">4 · Acessibilidades</a><a href="#ex3-sce">5 · SCE</a><a href="#ex3-quadro">6 · Quadro síntese</a></div>
+<div class="destaque"><strong>Três condições que atravessam o projeto:</strong> a parcela está em Paisagem Protegida / Domínio Hídrico — sujeita a <strong>licença</strong> e a parecer da CCDR; a zona de desgaseificação difusa <strong>interdita caves</strong> e exige mitigação de CO₂ e radão; a área útil de 8 912 m² faz do edifício um <strong>GES</strong>, obrigado a NZEB, renováveis e certificação energética.</div>
+<h3 id="ex3-pdm">1. PDM — Plano Diretor Municipal de Ponta Delgada</h3>
+
+<p class="ex3-intro">A análise técnica das exigências regulamentares para a parcela em causa, com base exclusiva no Regulamento do Plano Diretor Municipal (PDM) de Ponta Delgada, encontra-se estruturada nos pontos seguintes.</p>
+
+<h4 class="ex3-h">1.1 Categoria de solo e usos compatíveis</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Exigência (diploma + artigo/secção):</span> PDM de Ponta Delgada, Art. 9.º, n.º 4, al. c); Art. 43.º, n.º 1; Art. 44.º, n.º 1 e 2; Art. 5.º, n.º 1, al. k) e n.º 2.</p>
+    <p><span class="ex3-rot">Valor ou critério:</span> Solo Urbano — Espaços de Equipamentos Urbanos (Áreas de equipamentos de utilização coletiva). Usos complementares/compatíveis: comércio/serviços e habitação (máx. 20% da área de construção total). Sujeito às disposições do POBHL das Sete Cidades.</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «Nas áreas de equipamentos de utilização coletiva admite-se, ainda, a instalação de comércio/serviços, bem como de habitação desde que a área de construção respetiva não consuma mais do que 20%».</p>
+    <p><span class="ex3-rot">Efeito na parcela / condição para o projeto:</span> Permite a instalação de Equipamento Público; uso complementar limitado a ≤ 20% da área de construção total. Sujeito à prevalência das normas do POBHL das Sete Cidades.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">1.2 Índice de utilização e área de construção máxima</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Exigência (diploma + artigo/secção):</span> PDM de Ponta Delgada, Art. 38.º, n.º 4 / Art. 40.º, n.º 3; Regulamento do POBHL das Sete Cidades (documento em falta).</p>
+    <p><span class="ex3-rot">Valor ou critério:</span> <span class="sem-fonte">SEM FONTE</span> para o valor do índice no PDM (matéria regida pelo POBHL das Sete Cidades). No PDM geral, a edificabilidade é determinada pelo n.º de pisos × 4,0 m e Io = 70%.</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «No perímetro urbano das Sete Cidades aplicam-se exclusivamente os parâmetros de edificabilidade constantes do POBHL das Sete Cidades até à elaboração do respetivo Plano de Pormenor.»</p>
+    <p><span class="ex3-rot">Efeito na parcela / condição para o projeto:</span> A área de construção máxima exata (Iu × 8912 m²) não é fixada no PDM, dependendo do regulamento do POBHL das Sete Cidades (documento não carregado).</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">1.3 Cércea / altura máxima e número de pisos</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Exigência (diploma + artigo/secção):</span> PDM de Ponta Delgada, Art. 44.º, n.º 3, al. a) e b); Art. 38.º, n.º 4 / Art. 40.º, n.º 3; Regulamento do POBHL das Sete Cidades (documento em falta).</p>
+    <p><span class="ex3-rot">Valor ou critério:</span> Altura da fachada: 4,0 m por piso; Número de pisos: moda da envolvente + 1 piso (regime geral do PDM). <span class="sem-fonte">SEM FONTE</span> para os limites específicos do POBHL das Sete Cidades.</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «Altura da fachada – equivalente a 4,0 m por piso; Número de pisos – o resultando da moda do número de pisos da envolvente urbana… acrescido de 1 piso».</p>
+    <p><span class="ex3-rot">Efeito na parcela / condição para o projeto:</span> Cércea regulada pela moda da envolvente urbana acrescida de 1 piso (4,0 m/piso), condicionada aos limites mais restritivos do POBHL das Sete Cidades.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">1.4 Afastamentos mínimos (vias, confrontações, logradouros)</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Exigência (diploma + artigo/secção):</span> PDM de Ponta Delgada, Art. 15.º, n.º 10; Art. 32.º, n.º 1; Regulamento do POBHL das Sete Cidades (documento em falta).</p>
+    <p><span class="ex3-rot">Valor ou critério:</span> Se afastado &gt; 30 m da via: obrigatoriedade de acesso com largura para veículos de emergência. Alinhamento: dominante na frente urbana. Afastamentos às extremas: <span class="sem-fonte">SEM FONTE</span> no PDM para equipamentos urbanos nas Sete Cidades.</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «A viabilização de qualquer edifício em local situado a uma distância superior a 30 m da via pública habilitante mais próxima é condicionada à existência ou construção de um acesso».</p>
+    <p><span class="ex3-rot">Efeito na parcela / condição para o projeto:</span> Exige acesso apropriado para veículos de emergência a partir da Rua Atlântida das Sete Cidades se a edificação se situar a &gt; 30 m. Afastamentos às confrontações regidos pelo POBHL (documento em falta).</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">1.5 Área de implantação máxima e área impermeabilizada máxima</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Exigência (diploma + artigo/secção):</span> PDM de Ponta Delgada, Art. 44.º, n.º 3, al. c); Art. 15.º, n.º 11; Anexo I.</p>
+    <p><span class="ex3-rot">Valor ou critério:</span> Índice de Ocupação (Io): 70%. Conversão na parcela: 70% × 8912 m² = 6238,4 m² de área de implantação máxima. Interdição de construção em declives &gt; 25%. Impermeabilização: <span class="sem-fonte">SEM FONTE</span> para valor fixo em equipamentos urbanos.</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «Índice de ocupação do solo – 70%.» e «É interdita a construção em terrenos com declive superior a 25%.»</p>
+    <p><span class="ex3-rot">Efeito na parcela / condição para o projeto:</span> Área de implantação máxima de 6238,4 m². Necessidade de verificação topográfica de declive &lt; 25%. Coeficiente de impermeabilização sujeito ao POBHL das Sete Cidades.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">1.6 Estacionamento mínimo exigido para o uso</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Exigência (diploma + artigo/secção):</span> PDM de Ponta Delgada, Art. 68.º, n.º 1 e 2.</p>
+    <p><span class="ex3-rot">Valor ou critério:</span> Dimensionado caso a caso, fundamentado em estudo próprio. Para salas de espetáculo/utilização coletiva: 1 lugar por cada 3 lugares de lotação.</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «O estacionamento para equipamentos deve ser dimensionado caso a caso, e justificado em estudo próprio, devendo maximizar-se a integração do estacionamento necessário dentro do lote.»</p>
+    <p><span class="ex3-rot">Efeito na parcela / condição para o projeto:</span> Obrigatoriedade de elaborar estudo próprio de tráfego e dimensionamento de estacionamento no projeto de licenciamento, maximizando a oferta no interior do lote.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">1.7 Condicionantes sobrepostas à parcela</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Exigência (diploma + artigo/secção):</span> PDM de Ponta Delgada, Art. 7.º, n.º 2, al. c), n.º 4, al. c), vii), n.º 11, n.º 12; Art. 8.º, n.º 1 a 3; Art. 54.º, n.º 7.</p>
+    <p><span class="ex3-rot">Valor ou critério:</span> Domínio Hídrico (margem da Lagoa das Sete Cidades — Leste); Parque Natural de São Miguel / Área de Paisagem Protegida das Sete Cidades (SMG17); Zonas de risco de desgaseificação difusa (CO₂ e ²²²Rn).</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «Nas áreas abrangidas por restrições e servidões de utilidade pública, os respetivos regimes prevalecem sobre as demais disposições referentes aos regimes de uso do solo».</p>
+    <p><span class="ex3-rot">Efeito na parcela / condição para o projeto:</span> Prevalência das restrições do Domínio Hídrico e da Área de Paisagem Protegida; proibição de caves e obrigatoriedade de sistemas de mitigação de desgaseificação (CO₂ e Radão).</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">1.8 Servidões non edificandi ou restrições de altura</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Exigência (diploma + artigo/secção):</span> PDM de Ponta Delgada, Art. 7.º, n.º 7, al. a); Art. 11.º, n.º 3; Art. 54.º, n.º 7, al. b); POBHL das Sete Cidades (documento em falta).</p>
+    <p><span class="ex3-rot">Valor ou critério:</span> Interdição total de caves em zonas de desgaseificação; Faixa de proteção/servidão do Domínio Hídrico da Lagoa das Sete Cidades (faixa <em>non edificandi</em> ao longo da margem).</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «É interdita a construção de caves independentemente do uso associado».</p>
+    <p><span class="ex3-rot">Efeito na parcela / condição para o projeto:</span> Proibição de construção de pisos em cave. Respeito obrigatório pelas faixas de servidão marginal da Lagoa e da via pública envolvente (Rua Atlântida das Sete Cidades).</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h3 id="ex3-rjue">2. RJUE — Licenciamento Urbanístico</h3>
+
+<p class="ex3-intro">Enquadramento legal detalhado para a operação de <strong>construção nova</strong> na parcela do <strong>Campo de Futebol das Sete Cidades</strong> (concelho de Ponta Delgada, ilha de São Miguel, Açores), enquadrada na área protegida da <strong>Paisagem Protegida das Sete Cidades</strong>.</p>
+
+<p><span class="ex3-rot">Enquadramento normativo considerado:</span></p>
+<ul class="ex3-normas">
+    <li><strong>RJUE</strong> — <em>Regime Jurídico da Urbanização e da Edificação</em> (Decreto-Lei n.º 555/99, de 16 de dezembro, na sua redação atual).</li>
+    <li><strong>Portaria n.º 320/2026/1</strong>, de 31 de julho (<em>Modelos e Elementos Instrutórios dos Procedimentos do RJUE</em>).</li>
+    <li><strong>Decreto-Lei n.º 163/2006</strong>, de 8 de agosto (<em>Regime da Acessibilidade</em>).</li>
+    <li><strong>Decreto-Lei n.º 101-D/2020</strong>, de 7 de dezembro, alterado pelo <strong>Decreto-Lei n.º 11/2025</strong>, de 19 de fevereiro (<em>Desempenho Energético dos Edifícios</em>).</li>
+</ul>
+
+<h4 class="ex3-h">2.1 Tipo de operação urbanística e seu enquadramento</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Exigência (diploma + artigo/secção):</span> Decreto-Lei n.º 555/99 (RJUE), Artigo 2.º, alíneas b) e j).</p>
+    <p><span class="ex3-rot">Conteúdo / valor:</span> Qualifica-se como «Obras de construção» (criação de novas edificações) e integra o conceito de «Operação urbanística» (operação material de edificação incorporada no solo com caráter de permanência). Prática corrente: identificação sumária da tipologia do edificado nos quadros estatísticos e peças do projeto.</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> ««Obras de construção», as obras de criação de novas edificações;»</p>
+    <p><span class="ex3-rot">Obrigação para o futuro projeto:</span> Assinalar a pretensão como obra de construção no formulário oficial (Anexo I/I-C da Portaria n.º 320/2026/1) e instruir com os projetos aplicáveis a edifícios novos.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">2.2 Procedimento aplicável (comunicação prévia ou licença) e justificação</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Exigência (diploma + artigo/secção):</span> Decreto-Lei n.º 555/99 (RJUE), Artigo 4.º, n.º 2, alínea h).</p>
+    <p><span class="ex3-rot">Conteúdo / valor:</span> Sujeição obrigatória ao procedimento de licenciamento (licença). Justificação: a parcela insere-se na Paisagem Protegida das Sete Cidades, constituindo área sujeita a servidão administrativa ou restrição de utilidade pública / plano especial de ordenamento. Prática corrente: apresentação opcional de Pedido de Informação Prévia (PIP) prévio ao licenciamento para fixação de parâmetros.</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «Estão sujeitas a licença: […] h) As obras de construção, ampliação ou demolição de imóveis em áreas sujeitas a servidão administrativa ou restrição de utilidade pública…»</p>
+    <p><span class="ex3-rot">Obrigação para o futuro projeto:</span> Submeter pedido de licenciamento dirigido ao Presidente da Câmara Municipal de Ponta Delgada via plataforma eletrónica, aguardando aprovação expressa do projeto de arquitetura antes de iniciar as obras.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">2.3 Elementos instrutórios e peças exigidas (incluindo a folha de cálculo de índices)</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Exigência (diploma + artigo/secção):</span> Portaria n.º 320/2026/1, Artigo 1.º, n.º 2, Anexo I-C, Anexo V (pontos 5 a 17 e 26); Decreto-Lei n.º 163/2006, Artigo 3.º, n.º 5.</p>
+    <p><span class="ex3-rot">Conteúdo / valor:</span> Requerimento/Síntese da edificação (Anexo I-C), certidão predial, memória descritiva, plantas de localização, levantamento topográfico georreferenciado, projeto de arquitetura, projetos de especialidades (estabilidade, térmica, acústica, SCIE, redes, etc.), Plano de Acessibilidades e a folha de cálculo de índices e parâmetros urbanísticos do quadro sinóptico. Prática corrente: simulação prévia das taxas e parâmetros junto dos serviços técnicos municipais.</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «O pedido ou comunicação são acompanhados dos elementos instrutórios previstos em portaria…» e «A folha de cálculo de índices e parâmetros urbanísticos contidos no quadro sinóptico […] são ainda entregues…»</p>
+    <p><span class="ex3-rot">Obrigação para o futuro projeto:</span> Elaborar o quadro sinóptico e a folha de cálculo de índices urbanísticos (ocupação, utilização, impermeabilização), garantindo o cumprimento integral do plano territorial e do Plano de Acessibilidades.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">2.4 Formatos e formalidades de entrega</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Exigência (diploma + artigo/secção):</span> Portaria n.º 320/2026/1, Anexo VI, pontos 1 a 4; Decreto-Lei n.º 555/99 (RJUE), Artigo 8.º-A.</p>
+    <p><span class="ex3-rot">Conteúdo / valor:</span> Tramitação obrigatoriamente desmaterializada. Peças escritas e desenhadas em formato PDF/A (complementarmente IFC); planta de implantação em DWG georreferenciada; folha de cálculo de índices em ODS, XLS ou XLSX. Todas as peças devidamente datadas e com Assinatura Digital Qualificada. Prática corrente: organização de pastas por especialidades com codificação padronizada de ficheiros.</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «As peças escritas e desenhadas são entregues em formato PDF/A […] A planta de implantação deverá ser ainda apresentada em formato dwg […] a folha de cálculo […] em formato ODS, XLS ou XLSX.»</p>
+    <p><span class="ex3-rot">Obrigação para o futuro projeto:</span> Garantir a exportação dos ficheiros nos formatos regulamentares especificados e validar a assinatura digital qualificada (Cartão de Cidadão/Chave Móvel Digital via SCAP) dos subscritores.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">2.5 Termos de responsabilidade e seguro exigidos</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Exigência (diploma + artigo/secção):</span> Decreto-Lei n.º 555/99 (RJUE), Artigo 10.º, n.os 1 e 2; Portaria n.º 320/2026/1, Anexo V (pontos 11 a 14) e Anexo VII (modelos I, II, III).</p>
+    <p><span class="ex3-rot">Conteúdo / valor:</span> Termos de responsabilidade dos autores dos projetos e do coordenador de projeto atestando a conformidade legal e a compatibilidade entre projetos; comprovativo de apólice de seguro de responsabilidade civil extracontratual dos técnicos; na fase de obra, seguro de acidentes de trabalho. Prática corrente: verificação da validade das apólices e inscrições profissionais no momento da submissão.</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «O requerimento ou comunicação é sempre instruído com declaração dos autores dos projetos […] e do coordenador dos projetos, que ateste a compatibilidade entre os mesmos.»</p>
+    <p><span class="ex3-rot">Obrigação para o futuro projeto:</span> Preencher rigorosamente os modelos oficiais de termos de responsabilidade (Anexo VII), anexando o código de validação da ordem profissional e os dados das apólices de seguro válidas.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">2.6 Consultas externas / pareceres previsíveis</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Exigência (diploma + artigo/secção):</span> Decreto-Lei n.º 555/99 (RJUE), Artigo 13.º-A, n.os 1 a 3; Portaria n.º 320/2026/1, Anexo V, ponto 10.</p>
+    <p><span class="ex3-rot">Conteúdo / valor:</span> Devido à localização na Paisagem Protegida das Sete Cidades, a consulta de entidades da administração central/regional em razão da localização é promovida obrigatoriamente através da CCDR territorialmente competente (ou entidade coordenadora regional), que coordena as consultas e emite decisão global e vinculativa no prazo imperativo de 20 dias. Prática corrente: promoção de consultas prévias pelo interessado nos termos do artigo 13.º-B do RJUE para instrução direta do pedido.</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «A consulta de entidades […] que se devam pronunciar sobre a operação urbanística em razão da localização, é efetuada através de uma única entidade coordenadora, a CCDR territorialmente competente…»</p>
+    <p><span class="ex3-rot">Obrigação para o futuro projeto:</span> O projeto de arquitetura e a memória descritiva devem demonstrar expressamente o enquadramento na servidão/restrição ambiental e fundamentar a integração paisagística na Paisagem Protegida.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">2.7 Prazos aplicáveis e consequências do controlo sucessivo</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Exigência (diploma + artigo/secção):</span> Decreto-Lei n.º 555/99 (RJUE), Artigos 20.º, n.º 3, 23.º, n.º 1, 35.º, n.os 8-9, 93.º e 111.º.</p>
+    <p><span class="ex3-rot">Conteúdo / valor:</span> Prazo de apreciação do projeto de arquitetura: 30 dias. Deliberação final do licenciamento: 120 dias (área bruta de construção ≤ 300 m²) ou 150 dias (300 m² &lt; área ≤ 2200 m²). A ausência de decisão nos prazos gera deferimento tácito. A fiscalização municipal sucessiva pode inviabilizar obras ou ordenar reposição da legalidade em caso de desconformidade, caducando o dever de fiscalização em 10 anos. Prática corrente: acompanhamento dos prazos através do gestor de procedimento na plataforma informática.</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «A câmara municipal delibera sobre o projeto de arquitetura no prazo de 30 dias […] A câmara municipal delibera sobre o pedido de licenciamento: a) No prazo de 120 dias…»</p>
+    <p><span class="ex3-rot">Obrigação para o futuro projeto:</span> Afixar o aviso de publicitação (Anexo III) no local no prazo de 10 dias, submeter a informação de início dos trabalhos (Artigo 80.º-A / Anexo II) e executar a obra em estrita conformidade com os projetos aprovados.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h3 id="ex3-rgeu">3. RGEU — Requisitos de Edificação e Habitabilidade</h3>
+
+<p class="ex3-intro">Apresenta-se a análise técnica das exigências de habitabilidade e edificabilidade com base exclusivamente no <strong>Regulamento Geral das Edificações Urbanas (RGEU)</strong>.</p>
+
+<h4 class="ex3-h">3.1 Pé-direito livre e altura entre pisos na habitação</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Artigo:</span> Artigo 65.º, n.os 1, 2 e 3.</p>
+    <p><span class="ex3-rot">Valor ou critério:</span> Altura piso a piso: mínimo de 2,70 m na habitação. Pé-direito livre mínimo: 2,40 m na habitação (admitindo-se 2,20 m em vestíbulos, corredores, instalações sanitárias, despensas e arrecadações) e 3,00 m em estabelecimentos comerciais/equipamentos.</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «A altura mínima, piso a piso, em edificações destinadas à habitação é de 2,70 m […], não podendo ser o pé-direito livre mínimo inferior a 2,40 m».</p>
+    <p><span class="ex3-rot">Condição a respeitar no projeto:</span> Assegurar a cota livre vertical útil mínima de 2,40 m nos compartimentos habitáveis e 2,70 m entre pisos acabados (ou 3,00 m caso existam áreas afetas a uso comercial/equipamento público).</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">3.2 Áreas e dimensões mínimas dos compartimentos habitacionais</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Artigo:</span> Artigo 66.º, n.º 1; Artigo 67.º, n.º 1; Artigo 69.º, n.os 1 e 3.</p>
+    <p><span class="ex3-rot">Valor ou critério:</span> Quartos: 9,00 m² (simples) a 10,50 m²–12,00 m² (casal/duplo); Sala: 10,00 m² a 16,00 m²; Cozinha: 6,00 m² a 6,50 m². Dimensões mínimas: largura 2,10 m (área &lt; 9,50 m²); círculo Ø 2,40 m (9,50 m² ≤ área &lt; 12,00 m²); círculo Ø 2,70 m (12,00 m² ≤ área &lt; 15,00 m²); cozinha com dimensão mínima de 1,70 m e 1,10 m livre entre bancadas.</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «Os compartimentos de habitação não poderão ser em número e área inferiores aos indicados no quadro […] Quando a respectiva área for menor que 9,5 m2, a dimensão mínima será 2,10 m».</p>
+    <p><span class="ex3-rot">Condição a respeitar no projeto:</span> Respeitar as áreas úteis mínimas estipuladas e garantir a possibilidade de inscrição dos círculos de manobra e larguras mínimas exigidas na geometria interna dos compartimentos.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">3.3 Vãos de iluminação natural (comunicação direta com o exterior)</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Artigo:</span> Artigo 71.º, n.º 1.</p>
+    <p><span class="ex3-rot">Valor ou critério:</span> Área total de vãos: no mínimo 1/10 (10%) da área do compartimento em comunicação direta com o exterior, com a área mínima absoluta de 1,08 m² medidos no tosco.</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «serão sempre iluminados e ventilados por um ou mais vãos praticados nas paredes, em comunicação directa com o exterior e cuja área total não será inferior a um décimo da área […] mínimo de 1,08 m2».</p>
+    <p><span class="ex3-rot">Condição a respeitar no projeto:</span> Conceber aberturas exteriores envidraçadas cuja área total de iluminação direta seja igual ou superior a 10% da área do compartimento e no mínimo 1,08 m² no tosco por espaço habitável.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">3.4 Condições de ventilação dos espaços</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Artigo:</span> Artigo 71.º, n.º 1 e Artigo 72.º.</p>
+    <p><span class="ex3-rot">Valor ou critério:</span> Ventilação direta do exterior por vãos com área ≥ 1/10 da área do compartimento, devendo obrigatoriamente garantir-se a ventilação transversal do conjunto por meio de janelas em duas fachadas opostas.</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «Deverá ficar assegurada a ventilação transversal do conjunto de cada habitação, em regra por meio de janelas dispostas em duas fachadas opostas.»</p>
+    <p><span class="ex3-rot">Condição a respeitar no projeto:</span> Prever a disposição estratégica de vãos de iluminação/ventilação em fachadas opostas para assegurar a renovação natural e circulação de ar em todo o espaço.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">3.5 Logradouros, afastamentos e condições de salubridade</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Artigo:</span> Artigo 59.º; Artigo 60.º; Artigo 62.º, n.º 2; Artigo 73.º; Artigo 76.º.</p>
+    <p><span class="ex3-rot">Valor ou critério:</span> Afastamento entre fachadas de habitação: mínimo de 10,00 m. Visão direta de janelas: afastamento ≥ metade da altura do muro/fachada fronteira acima do piso, mínimo de 3,00 m. Faixa impermeável no logradouro: pelo menos 1,00 m de largura junto às paredes. Logradouro: profundidade ≥ metade da altura da fachada, mínimo de 6,00 m e área livre ≥ 40,00 m².</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «a distância mínima entre fachadas de edificações nas quais existam vãos de compartimentos de habitação não poderá ser inferior a 10 metros.»</p>
+    <p><span class="ex3-rot">Condição a respeitar no projeto:</span> Garantir no projeto o afastamento mínimo de 10,00 m entre fachadas com vãos habitacionais, manter a distância de 3,00 m de desimpedimento frontal em janelas e dotar o perímetro do edifício no logradouro de faixa impermeável com 1,00 m.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">3.6 Notas técnicas e redação considerada</h4>
+<p><span class="ex3-rot">Diploma e redação utilizada:</span> <em>Regulamento Geral das Edificações Urbanas (RGEU)</em>, aprovado pelo Decreto-Lei n.º 38 382, de 7 de agosto de 1951, na sua redação atualizada e em vigor.</p>
+<p><span class="ex3-rot">Especificidade do contexto:</span> Tratando-se de um equipamento público com doca de acesso náutico à Lagoa das Sete Cidades, caso o edifício inclua componentes não habitacionais ou puramente administrativos/comerciais, aplicam-se adicionalmente o pé-direito mínimo de 3,00 m (Artigo 65.º, n.º 3) e as condições gerais de salubridade e ventilação do Título III do RGEU.</p>
+
+<h3 id="ex3-acess">4. Acessibilidades — Decreto-Lei n.º 163/2006</h3>
+
+<p class="ex3-intro">Enquadramento e requisitos técnicos regulamentares aplicáveis ao projeto de construção de um <strong>equipamento público com doca de acesso náutico à Lagoa das Sete Cidades</strong> (1 piso acima do solo, com acesso pela via pública no concelho de Ponta Delgada, Açores), fundamentado no <strong>Decreto-Lei n.º 163/2006, de 8 de agosto</strong> (Regime da Acessibilidade aos Edifícios e Espaços Públicos) e respetivas <strong>Normas Técnicas anexas</strong>.</p>
+
+<h4 class="ex3-h">4.1 Percurso acessível (via pública, entrada principal e todos os espaços)</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Referência (artigo/secção do diploma ou do anexo):</span> Anexo: Capítulo 1 (Secção 1.1), Capítulo 2 (Secção 2.1, n.º 2.1.1) e Capítulo 4 (Secções 4.3.1 e 4.5.1).</p>
+    <p><span class="ex3-rot">Valor ou critério:</span> Percurso contínuo sem degraus/barreiras; largura livre útil: mínimo de 1,20 m; altura livre: mínimo de 2,00 m (espaços encerrados) e 2,40 m (espaços não encerrados); inclinação longitudinal: &lt; 5% (se ≥ 5% é considerado rampa).</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «Os edifícios e estabelecimentos devem ser dotados de pelo menos um percurso, designado de acessível, que proporcione o acesso seguro e confortável […] entre a via pública, o local de entrada/saída principal…»</p>
+    <p><span class="ex3-rot">Condição a respeitar no projeto:</span> Garantir ligação contínua e sem obstáculos desde o acesso na via pública até à entrada principal, espaços interiores e área da doca náutica, com largura útil ≥ 1,20 m.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">4.2 Portas de entrada/saída — largura útil</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Referência (artigo/secção do diploma ou do anexo):</span> Anexo: Capítulo 2 (Secção 2.2, n.º 2.2.3) e Capítulo 4 (Secção 4.9, n.os 4.9.1 e 4.9.2).</p>
+    <p><span class="ex3-rot">Valor ou critério:</span> Entrada/saída principal do edifício: largura útil mínima de 0,87 m (abertura a 90°); portas interiores/geral: largura útil mínima de 0,77 m e altura útil mínima de 2,00 m; ressaltos de soleira: ≤ 0,02 m.</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «As portas de entrada/saída dos edifícios e estabelecimentos devem ter um largura útil não inferior a 0,87 m, medida entre a face da folha da porta quando aberta e o batente…»</p>
+    <p><span class="ex3-rot">Condição a respeitar no projeto:</span> Projetar o vão de acesso principal com largura útil livre de passagem ≥ 0,87 m e portas interiores com largura útil ≥ 0,77 m, prevendo zonas de manobra de nível adjacentes.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">4.3 Circulações (patamares, galerias e corredores) e zonas de manobra</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Referência (artigo/secção do diploma ou do anexo):</span> Anexo: Capítulo 2 (Secção 2.3, n.os 2.3.1 a 2.3.3) e Capítulo 4 (Secção 4.4, n.os 4.4.1 e 4.4.2).</p>
+    <p><span class="ex3-rot">Valor ou critério:</span> Largura de corredores/galerias: mínimo de 1,20 m (admitindo-se 0,90 m em troços &lt; 1,50 m sem portas); diâmetro de manobra de rotação a 360°: 1,50 m; mudança de direção a 180°: 1,50 m × 1,20 m. Se o corredor tiver largura &lt; 1,50 m, prever zona de rotação a cada 10 m.</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «Os patamares, galerias e corredores devem possuir uma largura não inferior a 1,2 m.»</p>
+    <p><span class="ex3-rot">Condição a respeitar no projeto:</span> Manter largura útil contínua de circulação ≥ 1,20 m e inscrever círculos de manobra de rotação a 360° (Ø 1,50 m) nos átrios, topos de corredores e espaços principais.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">4.4 Corrimãos</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Referência (artigo/secção do diploma ou do anexo):</span> Anexo: Capítulo 2 (Secções 2.3.4 e 2.5.8/2.5.9) e Capítulo 4 (Secção 4.11, n.os 4.11.1 e 4.11.2).</p>
+    <p><span class="ex3-rot">Valor ou critério:</span> Diâmetro/largura de preensão: entre 0,035 m e 0,05 m (3,5 cm a 5 cm); afastamento da parede: mínimo de 0,035 m; altura: 0,90 m (ou duplo em rampas &gt; 6%: 0,70 m–0,75 m e 0,90 m–0,95 m); prolongamento nos topos: mínimo de 0,30 m.</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «Os corrimãos e as barras de apoio devem ter um diâmetro ou largura das superfícies de preensão compreendido entre 0,035 m e 0,05 m…»</p>
+    <p><span class="ex3-rot">Condição a respeitar no projeto:</span> Instalar corrimãos contínuos nos dois lados de rampas e escadas com elemento preênsil ajustado (Ø 0,035–0,05 m), fixados a ≥ 0,035 m da parede e prolongados 0,30 m nos extremos.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">4.5 Acesso vertical (elevador, rampa ou plataforma)</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Referência (artigo/secção do diploma ou do anexo):</span> Anexo: Capítulo 2, Secção 2.5 (n.º 2.5.1 — Rampas), Secção 2.6 (n.º 2.6.2 — Ascensores) e Secção 2.7 (n.º 2.7.1 — Plataformas).</p>
+    <p><span class="ex3-rot">Valor ou critério:</span> Rampas: inclinação ≤ 6% (desnível ≤ 0,60 m e projeção horizontal ≤ 10 m) ou ≤ 8% (desnível ≤ 0,40 m e projeção horizontal ≤ 5 m); ascensor: cabina interior útil ≥ 1,10 m (largura) × 1,40 m (profundidade), porta automática de correr ≥ 0,80 m; plataforma: dimensão útil mínima de 0,75 m × 1,00 m.</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «As rampas devem ter a menor inclinação possível e satisfazer […] ter uma inclinação não superior a 6%, vencer um desnível não superior a 0,6 m…»</p>
+    <p><span class="ex3-rot">Condição a respeitar no projeto:</span> Assegurar a ligação vertical entre pisos por rampa (inclinação ≤ 6%) ou ascensor acessível (cabina útil ≥ 1,10 m × 1,40 m e porta de 0,80 m), garantindo plataformas de descanso de 1,50 m.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">4.6 Instalações sanitárias adaptadas</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Referência (artigo/secção do diploma ou do anexo):</span> Anexo: Capítulo 2, Secção 2.9 (n.os 2.9.4, 2.9.5, 2.9.13, 2.9.19 e 2.9.20).</p>
+    <p><span class="ex3-rot">Valor ou critério:</span> Cabina individual acessível: dimensão útil mínima de 1,60 m (largura) × 1,70 m (comprimento) (ou 2,20 m × 2,20 m se uso frequente); rotação interior de 360° (Ø 1,50 m); assento da sanita: altura de 0,45 m (± 0,01 m); barras de apoio: a 0,70 m–0,75 m de altura; lavatório: topo a 0,80 m de altura com espaço livre inferior (altura ≥ 0,65 m, profundidade ≥ 0,50 m); porta: de correr ou batente a abrir para fora (largura ≥ 0,77 m).</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «O espaço interior deve ter dimensões não inferiores a 1,6 m de largura (parede em que está instalada a sanita) por 1,7 m de comprimento;»</p>
+    <p><span class="ex3-rot">Condição a respeitar no projeto:</span> Conceber pelo menos uma instalação sanitária acessível com dimensão mínima de 1,60 m × 1,70 m, sanita a 0,45 m com barras de apoio rebatíveis na zona de transferência e lavatório suspenso.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">4.7 Lugares de estacionamento reservados</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Referência (artigo/secção do diploma ou do anexo):</span> Anexo: Capítulo 2, Secção 2.8 (n.os 2.8.1 e 2.8.2).</p>
+    <p><span class="ex3-rot">Valor ou critério:</span> Lotação e lugares: 1 lugar (até 10 lugares totais); 2 lugares (11 a 25); 3 lugares (26 a 100). Dimensões úteis do lugar: largura ≥ 2,50 m + faixa de acesso lateral desimpedida ≥ 1,00 m (partilhável) e comprimento ≥ 5,00 m. Sinalização: pictograma SIA no piso (≥ 1,00 m de lado) e painel vertical visível.</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «Os lugares de estacionamento reservados devem: 1) Ter uma largura útil não inferior a 2,5 m; 2) Possuir uma faixa de acesso lateral […] não inferior a 1 m…»</p>
+    <p><span class="ex3-rot">Condição a respeitar no projeto:</span> Reservar e assinalar junto ao acesso pedonal mais próximo lugares de estacionamento com 2,50 m de largura acrescidos de faixa lateral de 1,00 m e 5,00 m de comprimento, com sinalização SIA.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">4.8 Exceções aplicáveis e condições em que podem ser invocadas</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Referência (artigo/secção do diploma ou do anexo):</span> Diploma: Decreto-Lei n.º 163/2006, Artigo 10.º, n.os 1, 2, 4 e 5.</p>
+    <p><span class="ex3-rot">Valor ou critério:</span> Dispensa apenas aplicável quando as obras sejam desproporcionadamente difíceis, exijam meios financeiro-económicos desproporcionados ou afetem sensivelmente o património cultural/histórico. Requer fundamentação técnica detalhada no Plano de Acessibilidades. Se alguma especificação for impraticável, devem ser cumpridas todas as restantes.</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «…o cumprimento das normas técnicas de acessibilidade […] não é exigível quando as obras necessárias à sua execução sejam desproporcionadamente difíceis, requeiram a aplicação de meios económico-financeiros desproporcionados…»</p>
+    <p><span class="ex3-rot">Condição a respeitar no projeto:</span> Tratando-se de obra nova de equipamento público, o cumprimento das normas é obrigatório; qualquer inviabilidade pontual deve ser devidamente fundamentada no Plano de Acessibilidades.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">4.9 Notas técnicas e redação considerada</h4>
+<p><span class="ex3-rot">Diploma e redação utilizada:</span> <em>Decreto-Lei n.º 163/2006, de 8 de agosto</em> (Regime da Acessibilidade aos Edifícios e Espaços Públicos) e respetivas <em>Normas Técnicas anexas</em>, na sua redação em vigor.</p>
+<p><span class="ex3-rot">Instrução do projeto:</span> Nos termos do Artigo 3.º, n.º 5 do Decreto-Lei n.º 163/2006 e da Portaria n.º 320/2026/1, a pretensão deve integrar obrigatoriamente um <strong>Plano de Acessibilidades</strong> composto por peças escritas e desenhadas que demonstrem a conformidade detalhada de todas as soluções adotadas.</p>
+
+<h3 id="ex3-sce">5. SCE — Eficiência Energética</h3>
+
+<p class="ex3-intro">Análise detalhada das exigências legais e critérios técnicos aplicáveis ao projeto de um <strong>edifício novo de equipamento público com doca de acesso náutico à Lagoa das Sete Cidades</strong>, com uma área útil de pavimento de <strong>8 912 m²</strong> (concelho de Ponta Delgada, Açores).</p>
+
+<p><span class="ex3-rot">Quadro normativo e regulamentar considerado:</span></p>
+<ul class="ex3-normas">
+    <li><strong>Decreto-Lei n.º 101-D/2020</strong>, de 7 de dezembro (Regulamento de Desempenho Energético dos Edifícios e Sistema de Certificação Energética — SCE).</li>
+    <li><strong>Decreto-Lei n.º 11/2025</strong>, de 19 de fevereiro (Segunda alteração ao Decreto-Lei n.º 101-D/2020 e transposição parcial da Diretiva UE 2024/1275).</li>
+    <li><strong>Manual SCE</strong> (Direção-Geral de Energia e Geologia — DGEG / ADENE).</li>
+    <li><strong>Portaria n.º 320/2026/1</strong>, de 31 de julho (Instrução de projetos de especialidades e comportamento térmico/AVAC).</li>
+</ul>
+
+<h4 class="ex3-h">5.1 Âmbito da operação (edifício novo ou grande intervenção) e requisitos aplicáveis</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Exigência (diploma + artigo/secção):</span> Decreto-Lei n.º 101-D/2020, Artigo 3.º, alíneas i) e p); Artigo 6.º, n.º 11; Manual SCE, Secções 3.2.1 e 3.3.</p>
+    <p><span class="ex3-rot">Valor ou critério:</span> Edifício Novo enquadrado como Grande Edifício de Comércio e Serviços (GES), uma vez que a área útil de pavimento (8 912 m²) é superior ao limiar regulamentar de 1 000 m².</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> ««Edifício novo», o edifício cujo primeiro processo de licenciamento […] tenha data de entrada do projeto […] a partir de 1 de julho de 2021» e ««Grande Edifício de Comércio e Serviços» ou «GES» […] iguala ou ultrapassa 1000 m2».</p>
+    <p><span class="ex3-rot">Condição a respeitar no projeto:</span> Aplicar obrigatoriamente a lista integral de componentes do Artigo 6.º, n.º 11 (envolventes opaca e envidraçada, ventilação, climatização, AQS, iluminação fixa, renováveis, SACE, elevação e eletromobilidade).</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">5.2 Requisitos de desempenho energético</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Exigência (diploma + artigo/secção):</span> Decreto-Lei n.º 101-D/2020, Artigo 6.º, n.º 1, n.º 4 alínea a) e n.º 9 alínea b); Manual SCE, Capítulo 16 (Secções 16.3 a 16.7).</p>
+    <p><span class="ex3-rot">Valor ou critério:</span> Classificação conceptual como edifício com necessidades quase nulas de energia (NZEB). Cumprimento do limite de energia primária fóssil (IEE<sub>fóssil,S</sub> ≤ IEE<sub>ref,S</sub>) e do indicador mínimo de energia renovável (Ren<sub>C&amp;S</sub>).</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «Os edifícios novos devem ser edifícios com necessidades quase nulas de energia.»</p>
+    <p><span class="ex3-rot">Condição a respeitar no projeto:</span> O balanço energético anual em energia primária (kWh<sub>EP</sub>/(m²·ano)) calculado pela metodologia do Manual SCE não pode exceder os consumos do edifício de referência equivalente.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">5.3 Condições de envolvente (transmitâncias, pontes térmicas, vãos, fatores solares)</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Exigência (diploma + artigo/secção):</span> Decreto-Lei n.º 101-D/2020, Artigo 6.º, n.º 4 alínea a) e n.º 11 alíneas a) e b); Manual SCE, Capítulos 7 e 8, Secção 16.4 (Tabelas 103 e 104).</p>
+    <p><span class="ex3-rot">Valor ou critério:</span> Limitação de coeficientes de transmissão térmica (U em W/(m²·°C)) em paredes, coberturas, pavimentos e vãos (U<sub>W</sub>); mitigação de pontes térmicas lineares (ψ em W/(m·°C)); controlo do fator solar de verão dos vãos (g<sub>tot</sub> ≤ g<sub>tot,ref</sub>) para radiação incidente &gt; 300 W/m².</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «Requisitos mínimos de desempenho energético relativos à envolvente dos edifícios, que visam, em particular, minimizar a ocorrência de patologias e limitar as necessidades de energia…»</p>
+    <p><span class="ex3-rot">Condição a respeitar no projeto:</span> Isolar a envolvente para cumprir os valores limiares de transmitância e pontes térmicas, aplicando vidros com controlo solar e sombreamentos móveis ou fixos para evitar o sobreaquecimento de Verão.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">5.4 Condições de ventilação e qualidade do ar interior</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Exigência (diploma + artigo/secção):</span> Decreto-Lei n.º 101-D/2020, Artigo 6.º, n.º 11 alínea c), Artigo 16.º, n.os 1 e 3; Manual SCE, Capítulo 9 e Tabela 71.</p>
+    <p><span class="ex3-rot">Valor ou critério:</span> Garantia do caudal mínimo de ar novo Q<sub>AN,mín</sub> = Máx (Q<sub>AN,ocupação</sub>; Q<sub>AN,edifício</sub>); limiar de proteção de CO₂ em edifícios novos com ventilação mecânica de 1 250 ppm (Categoria II, ≤ 860 ppm acima do exterior). Avaliação simplificada anual de QAI obrigatória por ser GES.</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «Os edifícios novos ou renovados […] são objeto de requisitos relativos à ventilação de espaços […] com vista a assegurar uma adequada filtragem e renovação do ar.»</p>
+    <p><span class="ex3-rot">Condição a respeitar no projeto:</span> Dotar o edifício de sistema de ventilação mecânica ou mista dimensionado para assegurar as renovações de ar regulamentares e estabelecer o plano de avaliação simplificada anual da QAI na fase de exploração.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">5.5 Exigências sobre sistemas técnicos (climatização, ventilação, águas quentes)</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Exigência (diploma + artigo/secção):</span> Decreto-Lei n.º 101-D/2020, Artigo 6.º, n.º 4 alínea b), Artigos 10.º, 11.º, 13.º e 14.º; Manual SCE, Capítulos 10, 11 e 14.</p>
+    <p><span class="ex3-rot">Valor ou critério:</span> Eficiência mínima em geradores de calor/frio (COP, EER, SCOP); potência específica de ventiladores (SFP em W/(m³/s)); obrigatoriedade de SACE para sistemas com potência nominal ≥ 290 kW; obrigação de 2 pontos de carregamento elétrico (estacionamento &gt; 20 lugares); elaboração e registo anual do Plano de Manutenção do GES.</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «Os sistemas técnicos dos edifícios devem ser projetados, instalados e operados de forma a possibilitarem as necessárias manutenções e a garantirem a necessária proteção da saúde humana.»</p>
+    <p><span class="ex3-rot">Condição a respeitar no projeto:</span> Especificar equipamentos de elevado rendimento sazonal, implementar Gestão Técnica Centralizada/SACE com monitorização de consumos, instalar os pontos de carregamento para veículos elétricos e submeter anualmente o Plano de Manutenção no Portal SCE.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">5.6 Produção de energia de fontes renováveis e restrições a combustíveis fósseis</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Exigência (diploma + artigo/secção):</span> Decreto-Lei n.º 101-D/2020, Artigo 3.º, alínea d) e Artigo 6.º, n.º 9 alínea b); Decreto-Lei n.º 11/2025, Artigo 2.º (alteração ao Artigo 34.º); Manual SCE, Secção 16.6.</p>
+    <p><span class="ex3-rot">Valor ou critério:</span> Obrigatoriedade de integração de renováveis para cobrir em grande medida as necessidades (Ren<sub>C&amp;S</sub>). <br>Status regulamentar: transposto — fim da concessão de incentivos/subsídios financeiros a caldeiras autónomas a combustíveis fósseis a partir de 01/01/2025 (Decreto-Lei n.º 11/2025). Previsto na Diretiva (UE) 2024/1275: descontinuação e eliminação progressiva total do uso de combustíveis fósseis nos edifícios até 2040.</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «A partir de 1 de janeiro de 2025 deixam de ser concedidos incentivos financeiros à instalação de caldeiras autónomas a combustíveis fósseis…»</p>
+    <p><span class="ex3-rot">Condição a respeitar no projeto:</span> Incorporar sistemas renováveis locais (e.g. painéis solares fotovoltaicos para autoconsumo e bombas de calor com SPF &gt; 2,5) e excluir a instalação de sistemas autónomos a combustíveis fósseis.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">5.7 Certificação energética (obrigação e classe aplicável)</h4>
+<div class="bloco ex3-item">
+    <p><span class="ex3-rot">Exigência (diploma + artigo/secção):</span> Decreto-Lei n.º 101-D/2020, Artigo 18.º, n.º 1 alíneas a) e c), Artigo 20.º, n.º 2 e Artigo 23.º, n.º 1 alínea d); Manual SCE, Capítulo 3.</p>
+    <p><span class="ex3-rot">Valor ou critério:</span> Obrigatoriedade de Pré-Certificado Energético (PCE) no licenciamento/projeto e Certificado Energético (CE) na conclusão. Exigência de classe energética elevada compatível com NZEB (classe A ou superior). Validade do 1.º CE de GES: 3 anos (passando a 8 anos nas avaliações periódicas seguintes).</p>
+    <p class="ex3-cit"><span class="ex3-rot">Citação literal:</span> «Estão sujeitos ao cumprimento da obrigação de certificação energética: a) A construção de edifícios novos […] c) Os GES, para efeito da avaliação periódica…»</p>
+    <p><span class="ex3-rot">Condição a respeitar no projeto:</span> Submeter o PCE subscrito por Perito Qualificado (PQ) para instrução do pedido de licenciamento urbanístico e emitir o CE final antes do título de utilização, agendando a avaliação periódica ao fim de 3 anos.</p>
+    <p><span class="ex3-rot">Data de consulta:</span> 19/10/2026.</p>
+</div>
+
+<h4 class="ex3-h">5.8 Redação legal e notas complementares</h4>
+<p><span class="ex3-rot">Redação utilizada:</span> Redação em vigor do <em>Decreto-Lei n.º 101-D/2020, de 7 de dezembro</em>, com as alterações introduzidas pelo <em>Decreto-Lei n.º 102/2021, de 19 de novembro</em> e pelo <em>Decreto-Lei n.º 11/2025, de 19 de fevereiro</em>; metodologias do <em>Manual SCE (DGEG/ADENE)</em> e procedimentos instrutórios da <em>Portaria n.º 320/2026/1</em>.</p>
+
+<h3 id="ex3-quadro">6. Quadro Síntese</h3>
+
+<p class="ex3-intro">Quadro síntese do equipamento público (Sete Cidades), por frente de análise, com identificação dos itens verificados, das condições imperativas, das condições condicionais ou a confirmar e das matérias sem fonte disponível.</p>
+
+<table class="ex3-tabela">
+    <caption>Quadro Síntese — Equipamento Público (Sete Cidades). Data de consulta: 19/10/2026.</caption>
+    <thead>
+        <tr>
+            <th style="width:11%">Frente</th>
+            <th style="width:17%">Itens verificados</th>
+            <th style="width:32%">Condições imperativas</th>
+            <th style="width:26%">Condições condicionais / a confirmar</th>
+            <th style="width:14%">SEM FONTE</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>PDM</strong></td>
+            <td>Categoria de solo, índice, cércea, afastamentos, implantação, estacionamento, condicionantes sobrepostas e interdições de cave.</td>
+            <td>O uso pretendido é enquadrável, correspondendo a Espaços de Equipamentos Urbanos (Art. 9.º, 43.º e 44.º do PDM de Ponta Delgada). O lote encontra-se sujeito à prevalência das restrições do Domínio Hídrico e do Parque Natural/Paisagem Protegida (Art. 7.º e 8.º). É interdita a construção em terrenos com declive &gt; 25% (Art. 15.º) e totalmente proibida a construção de caves devido a zona de desgaseificação difusa (Art. 54.º). O estacionamento deve ser maximizado no lote com base em estudo próprio (Art. 68.º). Data de consulta: 19/10/2026.<br><br>
+                <span class="ex3-adenda">[Adenda POBHLSC — DRR 4/2019/A]:</span> Para a Área edificada das Sete Cidades, são exigidos recuos de 10 m ao eixo da via (Art. 31.º). Para equipamentos, admite-se cércea máxima de 6 m e 2 pisos. Se considerado Ocupação Dispersa (Art. 32.º), a área de construção máxima admitida é de apenas 250 m² (implantação máxima de 150 m²), e os recuos à via são de 15 m.</td>
+            <td>Condicionado à criação de via de acesso para veículos de emergência, caso a edificação se encontre a uma distância superior a 30 m da via pública (Art. 15.º). As áreas complementares compatíveis estão limitadas a 20% da área de construção total. Necessário aferir em que subcategoria urbana específica o lote se insere (Área Edificada vs Ocupação Dispersa), pois o limite de 1000 m² pretendido ultrapassa os limites normais da Ocupação Dispersa.</td>
+            <td>Índice de utilização na Área Edificada das Sete Cidades (o regulamento não estabelece um valor numérico para o índice, remetendo a gestão morfológica para o futuro Plano de Pormenor).</td>
+        </tr>
+        <tr>
+            <td><strong>RJUE</strong></td>
+            <td>Tipo de operação, procedimento, elementos instrutórios, submissão, termos de responsabilidade e prazos.</td>
+            <td>Obra de construção de nova edificação obrigatoriamente sujeita a licença por incidir em área de Paisagem Protegida (Art. 2.º e Art. 4.º, n.º 2, alínea h) do Decreto-Lei n.º 555/99). Consulta de entidades promovida através da CCDR como entidade coordenadora (Art. 13.º-A). Exigida instrução integral desmaterializada (PDF/A, DWG georreferenciado e ODS/XLS) com termos de responsabilidade e assinatura digital (Portaria n.º 320/2026/1). Data de consulta: 19/10/2026.</td>
+            <td>O prazo para deliberação final variará entre 120 e 150 dias, condicionado à confirmação de que a área bruta de construção se consolida acima ou abaixo do limiar dos 300 m² definidos na lei (Art. 23.º do Decreto-Lei n.º 555/99).</td>
+            <td class="vazio">[POR PREENCHER]</td>
+        </tr>
+        <tr>
+            <td><strong>RGEU</strong></td>
+            <td>Altura piso a piso, pé-direito livre, áreas mínimas de espaços, vãos e salubridade.</td>
+            <td>Sendo afeto a equipamento público/estabelecimentos, o edifício tem de assegurar um pé-direito livre mínimo de 3,00 m nesses espaços (Art. 65.º, n.º 3 do Decreto-Lei n.º 38 382). Data de consulta: 19/10/2026.</td>
+            <td>Os afastamentos de 10,00 m entre fachadas (Art. 59.º e 60.º) e os rácios de vãos de iluminação natural iguais ou superiores a 10% com área mínima de 1,08 m² (Art. 71.º) devem ser confirmados caso venham a ser previstos usos habitacionais complementares ou assemelháveis.</td>
+            <td class="vazio">[POR PREENCHER]</td>
+        </tr>
+        <tr>
+            <td><strong>Acessibilidades (Decreto-Lei n.º 163/2006)</strong></td>
+            <td>Percurso acessível, entradas, circulações, acessos verticais, sanitários e estacionamento.</td>
+            <td>Imposição de percurso contínuo sem barreiras com largura útil ≥ 1,20 m desde a via pública até à entrada e área da doca náutica (Anexo: Cap. 1, 2 e 4). Portas com vão livre de passagem ≥ 0,87 m na entrada principal (Anexo: Cap. 2 e 4). Vencer desníveis com rampa de inclinação ≤ 6% ou elevador acessível, e garantir instalação sanitária adaptada de 1,60 m × 1,70 m (Anexo: Cap. 2). Obrigatória a instrução com Plano de Acessibilidades. Data de consulta: 19/10/2026.</td>
+            <td>O número final de lugares de estacionamento adaptados a prever com dimensão de 2,50 m de largura acrescidos de 1,00 m lateral ficará dependente da lotação global prevista (1 lugar para lotações até 10 lugares) (Anexo: Cap. 2).</td>
+            <td class="vazio">[POR PREENCHER]</td>
+        </tr>
+        <tr>
+            <td><strong>SCE (Decreto-Lei n.º 101-D/2020)</strong></td>
+            <td>Enquadramento GES, requisitos de NZEB, térmica da envolvente, ventilação mecânica, equipamentos e certificação.</td>
+            <td>Classificação como Grande Edifício de Comércio e Serviços (GES) (Art. 3.º), devendo ser projetado como edifício de necessidades quase nulas de energia (NZEB) (Art. 6.º do Decreto-Lei n.º 101-D/2020). Impõe-se a proibição de sistemas baseados em caldeiras autónomas a combustíveis fósseis (Decreto-Lei n.º 11/2025). Emissão obrigatória de Pré-Certificado Energético instruindo o licenciamento e posterior Certificado Energético (Art. 18.º). Data de consulta: 19/10/2026.</td>
+            <td>A instalação de sistema de automação e controlo (SACE) e pontos de carregamento elétrico dependem, respetivamente, da potência instalada (se ≥ 290 kW) e dos lugares de estacionamento (se &gt; 20 lugares). O nível final de mitigação de pontes térmicas e caudais mínimos de ar novo (QAI) dependem do projeto de especialidade térmica/AVAC.</td>
+            <td class="vazio">[POR PREENCHER]</td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="ex3-fontes">Fontes do Ex.3</h3>
+<div class="bloco"><ol>
+<li><em>Revisão do Plano Diretor Municipal de Ponta Delgada — Fase 4, Discussão Pública | Volume I, Regulamento</em> (junho de 2026).</li>
+        <li><em>Regulamento do Plano de Ordenamento da Bacia Hidrográfica da Lagoa (POBHL) das Sete Cidades</em> — remetido expressamente pelo PDM para os parâmetros de edificabilidade do perímetro urbano das Sete Cidades; referido como documento não disponibilizado nas fontes consultadas.</li>
+        <li><em>Regime Jurídico da Urbanização e da Edificação (RJUE)</em> — Decreto-Lei n.º 555/99, de 16 de dezembro, na redação atual.</li>
+        <li><em>Portaria n.º 320/2026/1</em>, de 31 de julho — modelos e elementos instrutórios dos procedimentos do RJUE.</li>
+        <li><em>Regulamento Geral das Edificações Urbanas (RGEU)</em> — Decreto-Lei n.º 38 382, de 7 de agosto de 1951, na redação atual.</li>
+        <li><em>Regime da Acessibilidade aos Edifícios e Espaços Públicos</em> — Decreto-Lei n.º 163/2006, de 8 de agosto, e respetivas normas técnicas anexas.</li>
+        <li><em>Sistema de Certificação Energética dos Edifícios (SCE)</em> — Decreto-Lei n.º 101-D/2020, de 7 de dezembro, com as alterações do Decreto-Lei n.º 102/2021, de 19 de novembro, e do Decreto-Lei n.º 11/2025, de 19 de fevereiro.</li>
+        <li><em>Manual SCE</em> — Direção-Geral de Energia e Geologia (DGEG) / ADENE.</li>
+</ol><p class="cap">Data de consulta das fontes: 19 de outubro de 2026.</p></div>
+
+
+<div class="versao"><strong>Versão 0.2:</strong> Belisa Correia · João Baptista · Lia Magalhães · tabelas simplificadas, fontes verificadas por P# (ver <a href="#fontes">Fontes verificadas</a>) · 37,859833° N, 25,790972° W · 262 m · Csb · Ex.3: enquadramento técnico e legal por domínio (consulta 19/10/2026) · imagens do Ex.1, Ex.2 e Ex.3 carregadas da pasta <code>FOTOS EX.3</code>, sem alterações ao texto.</div>
+
+<script>(function(){var pages=["page-joao","page-lia","page-belisa"];var dots=["dot-joao","dot-lia","dot-belisa"];var cur=0;window.showPage=function(i){cur=((i%pages.length)+pages.length)%pages.length;pages.forEach(function(id,k){var el=document.getElementById(id);if(el)el.classList.toggle("active",k===cur)});dots.forEach(function(id,k){var el=document.getElementById(id);if(el)el.classList.toggle("active",k===cur)});};window.movePage=function(d){window.showPage(cur+d);};var lb=document.getElementById("ex2-lightbox");var lbImg=document.getElementById("ex2-lightbox-img");document.querySelectorAll("#ex2 section.card img, #ex2 figure img").forEach(function(img){img.addEventListener("click",function(){lbImg.src=img.src;lb.classList.add("open");});});lb.addEventListener("click",function(){lb.classList.remove("open");});document.addEventListener("keydown",function(e){if(e.key==="Escape")lb.classList.remove("open");});window.showPage(0);})();</script>
+<script>(function(){var b=document.getElementById("themeBtn");var h=document.documentElement;function paint(){b.textContent=h.getAttribute("data-theme")==="light"?"Light":"Dark";}try{var s=localStorage.getItem("g3-theme");if(s)h.setAttribute("data-theme",s);}catch(e){}paint();b.addEventListener("click",function(){var nn=h.getAttribute("data-theme")==="dark"?"light":"dark";h.setAttribute("data-theme",nn);try{localStorage.setItem("g3-theme",nn);}catch(e){}paint();});})();</script>
+<h2 id="fontes">Fontes verificadas</h2>
+<div class="bloco"><ol>
+<li><strong>P0 — Localização: verificada.</strong> Coordenadas 37,859833° N, 25,790972° W — conversão DMS confirmada, sem correção; cruzamento OSM. NUTS PT2/PT20/PT200 (UE 2023/674); CAOP2025. <em>Disclaimer: altitude 262 m (Google Earth) — a confirmar em campo/DGT.</em></li>
+<li><strong>P1 — Socioeconómico: INE Censos 2021 definitivos</strong> (população, variação, envelhecimento, densidade, alojamentos, escolaridade, desemprego); INE EPCC 2023 (IpC 102,2/87,6); Pordata 458/207/220; CMPD Ago 2023; SREA Demografia 2023. <em>Disclaimer: valores transcritos dos ficheiros DADOS P1; envelhecimento, taxa de desemprego e IpC a reconfirmar nas tabelas oficiais antes de P6.</em></li>
+<li><strong>P2 — Lugar: verificado nos DADOS P2.</strong> Ortofotos 500 m/1 km (Google Earth ©2026 Maxar/Airbus); PGF São Miguel 2017; PGRH-Açores 2022–2027; PMEPC/PME Ponta Delgada; FSC; PDM (DRR 16/2007/A, DRR 3/2006/A); Baseline 2022; RNT Ruído SCUT 2022; DR 2/80/A; POBHLSC; CIVISA/USGS/GVP; Parque Natural. <em>Disclaimer: vistas 01–05 (Pinterest) são ilustrativas, não levantamento; Carta Geológica 1:50 000 é de 1959 — datada, usar só como enquadramento.</em></li>
+<li><strong>P3 — Clima: EPW 085120 + .stat</strong> (climate.onebuilding.org, 8 760 h) × <strong>IPMA normal 1991–2020 est. 513</strong>; Köppen Csb (Beck et al.); IDF T100 (PGRH). <em>Disclaimer: aplicada correção altimétrica ≈ −1,2 °C (estações a 78/35 m vs sítio a 262 m); o microclima da caldeira difere da costa — a verificar no local.</em></li>
+<li><strong>P4 — Vernáculo e obras: verificado.</strong> patrimonios.pt; encontrar-meu-arquiteto; Torres 2023 / Caldas 2007; dissertação Furnas; knn.pt (NINE DOTS 2016–2024); Ivo Tavares / ArchDaily (Ernesto do Canto, BOX 2025). <em>Disclaimer: artigo anteprojectos com acesso parcial (403) — dados do Ernesto do Canto confirmados via ficheiro DADOS P4 + ArchDaily; ano de abertura do NINE DOTS não explicitado na fonte.</em></li>
+<li><strong>P5:</strong> síntese de P1–P4 deste dossier. <em>Disclaimer: programa 450 m² / 3 fogos indicativo, pré-P6 — sujeito a PDM, non aedificandi da lagoa e levantamento do lote.</em></li>
+<li><strong>Ficheiros-fonte:</strong> P1-P5 Belisa.html · P1-P5 Joao.html · P1-P5 LIA.html (pasta FINAL) + DADOS P1–P4. Todas as 10 imagens estão embutidas neste ficheiro (base64) — ortofotos, vistas 01–05, PNG do local, NINE DOTS e Ernesto do Canto.</li>
+</ol></div>
+
+<!-- NOTAS IA -->
+<h2 id="notas-ia">Notas sobre Inteligência Artificial</h2>
+<div class="bloco">
+<ul>
+<li>Facilidade na obtenção de informações e criações de layouts conforme as indicações fornecidas;</li>
+<li>Uso de recursos criativos para apresentar diferentes informações;</li>
+<li>Boa eficiência para a realização do trabalho;</li>
+<li>Dificuldade em obtenção de informações específicas, exigindo confirmação humana;</li>
+<li>Dependente do humano para fazer download de ficheiros;</li>
+</ul>
+</div>
+
+<!-- AUTORES -->
+<h2 id="autores">Autores</h2>
+<div class="bloco">
+<p><strong>Belisa Correia · João Baptista · Lia Magalhães</strong> — Grupo 3, trabalho realizado em cowork.</p>
+</div>
+
+<div class="nota"><strong>Disclaimer:</strong> esta página foi feita no OpenCode com Muse Spark 1.3 Free. Conteúdo de estudo académico — valores e fontes verificados por P# na secção <a href="#fontes">Fontes verificadas</a>; programa e propostas indicativos, a confirmar em campo e no PDM.</div>
+
+<p class="footer">Grupo 3 — Inteligência Artificial Aplicada na Arquitetura | Tarefa 1 — Estudo Detalhado do Local | Group Version v0.2 | Setembro 2026</p>
+</div>
+<script>
+document.getElementById('topBtn').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+window.addEventListener('scroll',()=>{document.getElementById('topBtn').style.display=window.scrollY>600?'block':'none'},{passive:true});
+const lb=document.getElementById('lightbox');const lbImg=lb.querySelector('img');const lbCap=lb.querySelector('p');
+document.querySelectorAll('.foto img').forEach(img=>{img.addEventListener('click',()=>{lbImg.src=img.src;const cap=img.parentElement.querySelector('.legenda');lbCap.textContent=cap?cap.textContent:'';lb.classList.add('open');});});
+lb.addEventListener('click',()=>lb.classList.remove('open'));
+document.querySelectorAll('ul.check li').forEach(li=>{li.addEventListener('click',()=>li.classList.toggle('done'));});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('open');});
+</script>
+<script>(function(){document.querySelectorAll('.idx-row[data-target]').forEach(function(row){var id=row.getAttribute('data-target');var sec=document.getElementById(id);var btn=row.querySelector('.idx-toggle');var sub=document.querySelector('.idx-sub[data-sub="'+id+'"]');if(!sec||!sub){btn.style.visibility='hidden';return;}var h3s=[];var el=sec.nextElementSibling;while(el&&el.tagName!=='H2'){if(el.tagName==='H3')h3s.push(el);el=el.nextElementSibling;}if(!h3s.length){btn.style.visibility='hidden';return;}h3s.forEach(function(h,i){if(!h.id)h.id=id+'-s'+i;var a=document.createElement('a');a.href='#'+h.id;a.textContent=h.textContent;sub.appendChild(a);});btn.addEventListener('click',function(){var open=sub.classList.toggle('open');btn.textContent=open?'–':'+';});});})();
+</script>
+<script>(function(){document.querySelectorAll('#p2tabs button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#p2tabs button').forEach(function(x){x.classList.remove('active');});b.classList.add('active');var f=b.getAttribute('data-f');document.querySelectorAll('#p2grid .shop-card').forEach(function(c){c.classList.toggle('hidden',f!=='all'&&c.getAttribute('data-f')!==f);});});});document.querySelectorAll('#p2grid .shop-card img').forEach(function(img){img.addEventListener('click',function(){var l=document.getElementById('lightbox');l.querySelector('img').src=img.src;var cap=img.closest('.shop-card').querySelector('figcaption span');l.querySelector('p').textContent=cap?cap.textContent:'';l.classList.add('open');});});})();
+</script>
+<script>(function(){function on(){var l=document.getElementById('siteFallback');if(l)l.media='all';}var k=document.querySelector('link[href="assets/site.css"]');if(!k||!k.sheet){window.addEventListener('load',function(){if(!k||!k.sheet)on();});}k&&k.addEventListener('error',on);})();</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
